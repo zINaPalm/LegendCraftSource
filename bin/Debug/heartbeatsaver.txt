@@ -1,1 +1,0 @@
-port=25565&max=20&name=LegendCraft%20Server!&public=True&salt=YvrhcgTk6F3lvVVXDaFpDbxDG4lMnENg&users=0
