@@ -74,7 +74,7 @@ namespace fCraft {
 
             bool isNum = int.TryParse(numberone, out no1);
 
-            if (!int.TryParse(numberone, out no1))
+            if (!isNum)
             {
                 player.Message("Usage is /Calculator [number] [+ or -] [number]. Please choose a whole number for [number].");
                 return;
@@ -83,7 +83,7 @@ namespace fCraft {
             else
             {
                  bool isNum2 = int.TryParse(numbertwo, out no2);
-                 if (!int.TryParse(numbertwo, out no2))
+                 if (!isNum)
                 {
                     player.Message("Usage is /Calculator [number] [operator] [number]. Please choose a whole number for [number].");
                     return;
