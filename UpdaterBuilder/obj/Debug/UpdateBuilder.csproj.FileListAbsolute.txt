@@ -1,0 +1,6 @@
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\UpdateBuilder.exe.config
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\UpdateBuilder.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\UpdateBuilder.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\UpdaterBuilder\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\UpdaterBuilder\obj\Debug\UpdateBuilder.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\UpdaterBuilder\obj\Debug\UpdateBuilder.pdb

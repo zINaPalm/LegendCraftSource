@@ -1,0 +1,42 @@
+4:57:13 PM > ------ Log Starts Tuesday, August 28, 2012 (8/28/2012) ------
+4:57:13 PM > Working directory: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release
+4:57:13 PM > Log path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\logs
+4:57:13 PM > Map path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\maps
+4:57:13 PM > Config path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\config.xml
+4:57:13 PM > Warning: PlayerDB.Load: No player DB file found.
+4:57:13 PM > Warning: IPBanList.Load: No IP ban file found.
+4:57:14 PM > CommandManager: 186 commands registered (6 hidden, 144 aliases)
+4:57:14 PM > PluginManager: No plugins found
+4:57:14 PM > Checking for 800Craft updates...
+4:57:14 PM > ERROR: An error occured while trying to check for updates: System.Net.WebException: The remote server returned an error: (404) Not Found.
+4:57:14 PM > Backed up server data to "databackups\LegendCraftData_20120828_16-57-14.zip"
+4:57:14 PM > Server.Start: No world list found. Creating default "main" world.
+4:57:14 PM > Saved map to C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\maps\main.fcm
+4:57:15 PM > Server.Run: now accepting connections at 67.86.92.193:25565
+4:57:15 PM > All available worlds: main
+4:57:15 PM > Main world: main; default rank: guest
+4:57:15 PM > WoM Direct heartbeat is enabled. To edit your server's appearence on the server list, see https://direct.worldofminecraft.com/server.php?ip=67.86.92.193&port=25565&salt=DGXeIWQb5A6wUgfOLKxqXAxp4MZlFeZt
+4:57:15 PM > Warning: PortalDB file does not exist.
+4:57:19 PM > Warning: heartbeatsaver.exe does not exist and failed to launch
+4:57:19 PM > Server shutting down (ProcessClosing)
+4:57:19 PM > Saved map to C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\maps\main.fcm
+4:57:19 PM > PlayerDB.Save: Saved player database (0 records) in 2ms
+4:57:19 PM > IPBanList.Save: Saving IP ban list (0 records).
+1:27:29 PM > ------ Log Starts Wednesday, August 29, 2012 (8/29/2012) ------
+1:27:29 PM > Working directory: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release
+1:27:29 PM > Log path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\logs
+1:27:29 PM > Map path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\maps
+1:27:29 PM > Config path: C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\config.xml
+1:27:30 PM > PlayerDB.Load: Done loading player DB (0 records) in 32ms. MaxID=255
+1:27:30 PM > IPBanList.Load: Done loading IP ban list (0 records).
+1:27:31 PM > CommandManager: 186 commands registered (6 hidden, 145 aliases)
+1:27:31 PM > PluginManager: No plugins found
+1:27:31 PM > Checking for 800Craft updates...
+1:27:31 PM > ERROR: An error occured while trying to check for updates: System.Net.WebException: The remote server returned an error: (404) Not Found.
+1:27:31 PM > Backed up server data to "databackups\LegendCraftData_20120829_13-27-31.zip"
+1:27:32 PM > ERROR: Could not start listening on port 25565, stopping. (Only one usage of each socket address (protocol/network address/port) is normally permitted)
+1:27:32 PM > Warning: heartbeatsaver.exe does not exist and failed to launch
+1:27:32 PM > Server shutting down (FailedToStart)
+1:27:32 PM > Saved map to C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Release\maps\main.fcm
+1:27:32 PM > PlayerDB.Save: Saved player database (0 records) in 2ms
+1:27:32 PM > IPBanList.Save: Saving IP ban list (0 records).

@@ -1,0 +1,1 @@
+2 IP,bannedBy,banDate,banReason,playerName,attempts,lastAttemptName,lastAttemptDate

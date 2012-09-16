@@ -1,0 +1,12 @@
+C:\Users\Jonah\Desktop\Custom Software\Custom Software\bin\Debug\fCraft.dll
+C:\Users\Jonah\Desktop\Custom Software\Custom Software\bin\Debug\fCraft.pdb
+C:\Users\Jonah\Desktop\Custom Software\Custom Software\fCraft\obj\Debug_Events\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Custom Software\Custom Software\fCraft\obj\Debug_Events\fCraft.dll
+C:\Users\Jonah\Desktop\Custom Software\Custom Software\fCraft\obj\Debug_Events\fCraft.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\fCraft.dll
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\fCraft.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\fCraft\obj\Debug_Events\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\fCraft\obj\Debug_Events\fCraft.dll
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\fCraft\obj\Debug_Events\fCraft.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Release\fCraft.dll
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Release\fCraft.pdb

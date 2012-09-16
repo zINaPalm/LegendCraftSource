@@ -1,0 +1,36 @@
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\bin\Debug\ConfigGUI.exe.config
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\bin\Debug\ConfigGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\bin\Debug\ConfigGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.ChatPreview.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.ColorPicker.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.KeywordPicker.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.MainForm.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.AddWorldPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.DeleteRankPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.PermissionLimitBox.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.Properties.Resources.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.TextEditorPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\fCraft.ConfigGUI.UpdaterSettingsPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\ConfigGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source v1.0.0\ConfigGUI\obj\Debug\ConfigGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ConfigGUI.exe.config
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\ConfigGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\ConfigGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.ChatPreview.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.ColorPicker.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.KeywordPicker.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.MainForm.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.AddWorldPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.DeleteRankPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.PermissionLimitBox.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.Properties.Resources.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.TextEditorPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\fCraft.ConfigGUI.UpdaterSettingsPopup.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ConfigGUI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ConfigGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ConfigGUI.pdb

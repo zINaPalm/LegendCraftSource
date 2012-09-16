@@ -1,0 +1,23 @@
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\ServerGUI.exe.config
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\fCraft.ServerGUI.MainForm.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\fCraft.ServerGUI.UpdateWindow.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\ServerGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\bin\Debug\ServerGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\ServerGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Dev\ServerGUI\obj\Debug\ServerGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ServerGUI.exe.config
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\ServerGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\ServerGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ServerGUI.exe
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\bin\Debug\ServerGUI.pdb
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\fCraft.ServerGUI.MainForm.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\fCraft.ServerGUI.UpdateWindow.resources
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Jonah\Desktop\bin\Debug\ServerGUI.exe.config
+C:\Users\Jonah\Desktop\ServerGUI\obj\Debug\ServerGUI.exe
+C:\Users\Jonah\Desktop\ServerGUI\obj\Debug\ServerGUI.pdb
