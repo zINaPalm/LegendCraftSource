@@ -48,6 +48,24 @@ namespace fCraft {
             Player.Moved += new EventHandler<Events.PlayerMovedEventArgs>(Player_IsBack);
         }
         #region LegendCraft
+/* Copyright (c) <2012> <LeChosenOne, DingusBingus>
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.*/
 
         #region Calculator
         static readonly CommandDescriptor CdCalculator = new CommandDescriptor
@@ -65,36 +83,22 @@ namespace fCraft {
 
         static void CalcHandler(Player player, Command cmd)
         {
-            String numberone = cmd.Next();            
+            String numberone = cmd.Next();
             String op = cmd.Next();
             String numbertwo = cmd.Next();
             int no1 = Convert.ToInt32(numberone);
             int no2 = Convert.ToInt32(numbertwo);
 
 
-            bool isNum = int.TryParse(numberone, out no1);
-
-            if (!isNum)
+            if (player.Can(Permission.Chat))
             {
-                player.Message("Usage is /Calculator [number] [+ or -] [number]. Please choose a whole number for [number].");
-                return;
-
-            }
-            else
-            {
-                 bool isNum2 = int.TryParse(numbertwo, out no2);
-                 if (!isNum)
-                {
-                    player.Message("Usage is /Calculator [number] [operator] [number]. Please choose a whole number for [number].");
-                    return;
-                }
-                else
+                try
                 {
                     if (numberone != null | op != null | numbertwo != null)
                     {
 
 
-                        if (op == "+" | op == "-" | op == "*" | op == "/" )
+                        if (op == "+" | op == "-" | op == "*" | op == "/")
                         {
 
                             if (op == "+")
@@ -141,7 +145,7 @@ namespace fCraft {
                             }
                             if (op == "*")
                             {
-                    
+
                                 long mult = no1 * no2;
                                 if (mult < 0 | no1 < 0 | no2 < 0)
                                 {
@@ -172,7 +176,7 @@ namespace fCraft {
                                 }
                                 else
                                 {
-                                    if ( no1 % 2 == 0 | no2 % 2 == 0)
+                                    if (no1 % 2 == 0 | no2 % 2 == 0)
                                     {
                                         if (no1 % no2 == 0)
                                         {
@@ -181,7 +185,7 @@ namespace fCraft {
                                         else
                                         {
                                             player.Message("{0}/{1}={2}, rounded", no1, no2, div);
-                                        }                                      
+                                        }
                                     }
                                     else
                                     {
@@ -189,7 +193,7 @@ namespace fCraft {
                                         return;
                                     }
                                 }
-                            }             
+                            }
                         }
                         else
                         {
@@ -197,10 +201,19 @@ namespace fCraft {
                             return;
                         }
                     }
-                   
+                    else
+                    {
+                        CdCalculator.PrintUsage(player);
+                    }
+                }
+                catch (FormatException)
+                {
+                    player.Message("Expected format is /calc [number] [operator] [number]. Example: '/calc 12 * 8'");
                 }
             }
         }
+            
+        
         #endregion
 
         #region LeBot

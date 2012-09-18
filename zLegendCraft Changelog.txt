@@ -4,6 +4,7 @@ Add: /LeBot
 Add: /Calculator
 Add: /UndoAll
 Add: Several Command Aliases
+Add: MIT Liscence added to software and README
 Change: /fortuncookie given more options 
 Change: ServerGUI now has no 800craft text
 Change: /banx undo's 100,000 blocks now

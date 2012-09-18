@@ -10,3 +10,4 @@ Make a ToDo List - Finished.
 Add Dingus's New Building Command - Cancelled.
 UndoAll - Finished.
 Add UndoAll to Banall - Not Started.
+Add License- Finished.
