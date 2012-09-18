@@ -98,6 +98,7 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdCenter);
 
             CommandManager.RegisterCommand(CdUndoAll);
+            CommandManager.RegisterCommand(CdMessageBlock);
         }
         #region LegendCraft
         /* Copyright (c) <2012> <LeChosenOne, DingusBingus>
@@ -118,6 +119,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
+
+        static readonly CommandDescriptor CdMessageBlock = new CommandDescriptor
+        {
+            Name = "MessageBlock",
+            Aliases = new[] { "MsgBlock" },
+            Category = CommandCategory.Moderation,
+            IsConsoleSafe = false,
+            IsHidden = false,
+            Permissions = new[] { Permission.MessageBlock },
+            Usage = "/MessageBlock Message",
+            Help = "Creates a message that is sent to the player whenever the touch the messageblock.",
+            Handler = MsgBlockHandler
+        };
+
+        public static void MsgBlockHandler(Player player, Command cmd)
+        {
+            String message = cmd.NextAll();
+            if (message == null) 
+            {
+                CdMessageBlock.PrintUsage(player);
+            }
+             Vector3I MessageBlock = new Vector3I(player.Position.X / 32, player.Position.Y / 32, (player.Position.Z / 32) - 2);
+        }
+
         static readonly CommandDescriptor CdUndoAll = new CommandDescriptor
         {
             Name = "UndoAll",
@@ -133,8 +158,17 @@ THE SOFTWARE.*/
 
         public static void UndoAllHandler(Player player, Command cmd)
         {
-            string targetname = cmd.Next();
-            PlayerInfo target = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetname);
+            string targetName = cmd.Next();
+            if (targetName == null)
+            {
+                CdUndoAll.PrintUsage(player);
+            }
+            PlayerInfo target = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
+            if (target == null)
+            {
+                player.MessageNoPlayer(targetName);
+                return;
+            }
             UndoPlayerHandler2(player, new Command("/undox " + target.Name + " 10000000"));
         }
 

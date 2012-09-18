@@ -256,6 +256,9 @@ namespace fCraft {
         MuteAll,
 
         ///<summary>Permissions to use LeBot.</summary>
-        LeBot
+        LeBot,
+
+        ///<summary>Permission to use manage message blocks</summar>
+        MessageBlock
     }
 }

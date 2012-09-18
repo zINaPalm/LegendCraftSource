@@ -267,8 +267,8 @@ THE SOFTWARE.*/
             }
             else if (option == "help")
             {
-                player.Message("Spleef: Displays and sets a 3 second timer for 'spleef.'\n" +
-                    "Go: Displays and sets a 5 second timer for 'go.'\n" +
+                player.Message("Spleef: Sets a 3 second timer for 'spleef.'\n" +
+                    "Go: Sets a 5 second timer for 'go.'\n" +
                     "Server: Displays the server name.\n" +
                     "Joke: Displays a joke.\n" +
                     "Time: Displays the users total time on the server.\n" +
