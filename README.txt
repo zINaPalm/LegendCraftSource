@@ -272,5 +272,6 @@ Thanks to the bug Testers and helpers for LegendCraft:
     Ascending Blackout Server Community, Pure2k12, ThunderCraft Server Community, and Dingus and Jake's Server
 
 Special Thanks to Pure2K12 for catching numerous bugs and for inspiration!
+Special Thanks to Jonty800 for doing stuff!
 
 And thank You for using LegendCraft!

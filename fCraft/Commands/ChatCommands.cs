@@ -86,14 +86,30 @@ THE SOFTWARE.*/
             String numberone = cmd.Next();
             String op = cmd.Next();
             String numbertwo = cmd.Next();
-            int no1 = Convert.ToInt32(numberone);
-            int no2 = Convert.ToInt32(numbertwo);
+            int no1, no2;
+            
+            if (numberone == null || numbertwo == null || op == null)
+            {
+                CdCalculator.PrintUsage(player);
+                return;
+            }
+
+            if (!int.TryParse(numberone, out no1))
+            {
+                player.Message("Please choose from a whole number.");
+                return;
+            }
+
+            if (!int.TryParse(numbertwo, out no2))
+            {
+                player.Message("Please choose from a whole number.");
+                return;
+            }
 
 
             if (player.Can(Permission.Chat))
             {
-                try
-                {
+
                     if (numberone != null | op != null | numbertwo != null)
                     {
 
@@ -206,12 +222,9 @@ THE SOFTWARE.*/
                         CdCalculator.PrintUsage(player);
                     }
                 }
-                catch (FormatException)
-                {
-                    player.Message("Expected format is /calc [number] [operator] [number]. Example: '/calc 12 * 8'");
-                }
+        
             }
-        }
+        
             
         
         #endregion
