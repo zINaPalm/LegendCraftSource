@@ -102,7 +102,7 @@ THE SOFTWARE.*/
             Usage = "/BanAll PlayerName|IPAddress [Reason]",
             Help = "&SBans the player's name, IP, and all other names associated with the IP. " +
                    "UndoAll's the playername. If player is not online, " +
-                   "last known IP associated with the name is used. " +
+                   "the last known IP associated with the name is used. " +
                    "You can also type in the IP address directly. " +
                    "Any text after PlayerName/IP will be saved as a memo. ",
             Handler = BanAllHandler
