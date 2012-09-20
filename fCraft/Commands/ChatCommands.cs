@@ -76,7 +76,7 @@ THE SOFTWARE.*/
             Permissions = new Permission[] { Permission.Chat },
             IsConsoleSafe = true,
             Usage = "/Calculator [number] [+ or -] [number]",
-            Help = "Lets you use a simple calculator in minecraft. Valid options are [+ and -].",
+            Help = "Lets you use a simple calculator in minecraft. Valid options are [ + , - . * , and /].",
             NotRepeatable = false,
             Handler = CalcHandler,
         };
