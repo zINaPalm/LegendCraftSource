@@ -459,7 +459,7 @@ THE SOFTWARE.*/
             IsHidden = false,
             Permissions = new[] { Permission.Ban },
             Usage = "/Banx playerName reason",
-            Help = "Bans and undoes a players actions up to 50000 blocks",
+            Help = "Bans and undoes a players actions up to 100000 blocks",
             Handler = BanXHandler
         };
 
@@ -1334,7 +1334,7 @@ THE SOFTWARE.*/
 
         static readonly CommandDescriptor CdCopySlot = new CommandDescriptor {
             Name = "CopySlot",
-            Aliases = new[] { "cs " },
+            Aliases = new[] { "cs" },
             Category = CommandCategory.Building,
             Permissions = new[] { Permission.CopyAndPaste },
             Usage = "/CopySlot [#]",
