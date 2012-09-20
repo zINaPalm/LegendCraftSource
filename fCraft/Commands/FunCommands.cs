@@ -81,7 +81,7 @@ namespace fCraft
                 Aliases = new string[] { "Toss" },
                 Category = CommandCategory.Chat | CommandCategory.Fun,
                 Permissions = new Permission[] { Permission.Mute },
-                IsConsoleSafe = false,
+                IsConsoleSafe = true,
                 Usage = "/Throw playername",
                 Help = "Throw's a player.",
                 NotRepeatable = true,
@@ -124,7 +124,7 @@ namespace fCraft
                             {
                                 Position slap = new Position(target.Position.Z, target.Position.X, (target.World.Map.Bounds.YMax) * 32);
                                 target.TeleportTo(slap);
-                                Server.Players.CanSee(target).Except(target).Message("Player {0} was &eThrown&s by {1}&s.", target.ClassyName, player.ClassyName);
+                                Server.Players.CanSee(target).Except(target).Message("&SPlayer {0}&S was &eThrown&s by {1}&S.", target.ClassyName, player.ClassyName);
                                 IRC.PlayerSomethingMessage(player, "thrown", target, null);
                                 target.Message("&sYou were &eThrown&s by {0}&s.", player.ClassyName);
                                 return;
