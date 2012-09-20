@@ -8,3 +8,6 @@ C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Release\Ge
 C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Release\GenerateResource.write.1.tlog
 C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Release\ServerGUI.exe
 C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Release\ServerGUI.pdb
+C:\Users\Jonah\LegendCraftSource\bin\Release\ServerGUI.exe.config
+C:\Users\Jonah\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.exe
+C:\Users\Jonah\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.pdb
