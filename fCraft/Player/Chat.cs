@@ -35,6 +35,7 @@ namespace fCraft {
             rawMessage = rawMessage.Replace("$motd", ConfigKey.MOTD.GetString());
             rawMessage = rawMessage.Replace("$date", DateTime.UtcNow.ToShortDateString());
             rawMessage = rawMessage.Replace("$time", DateTime.Now.ToString());
+            rawMessage = rawMassage.Replace("$ass", "You, my good sir, are an &cAss&f");
             if (!player.Can(Permission.ChatWithCaps))
             {
                 int caps = 0;
