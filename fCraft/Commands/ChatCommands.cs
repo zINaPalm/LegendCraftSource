@@ -43,6 +43,7 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdFortuneCookie);
             CommandManager.RegisterCommand(CdLeBot);
             CommandManager.RegisterCommand(CdCalculator);
+            CommandManager.RegisterCommand(CdGPS);
             
 
             Player.Moved += new EventHandler<Events.PlayerMovedEventArgs>(Player_IsBack);
@@ -66,6 +67,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
+        
+        static readonly CommandDescriptor CdGPS = new CommandDescriptor
+        {
+            Name = "GPS",
+            Category = CommandCategory.Chat ,
+            Permissions = new Permission[] { Permission.Chat },
+            IsConsoleSafe = false,
+            Usage = "/GPS",
+            Help = "Displays your coordinates.",
+            NotRepeatable = true,
+            Handler = GPSHandler,
+        };
+
+        static void GPSHandler(Player player, Command cmd)
+        {
+            LegendCraft.coords(player);
+        }
 
         #region Calculator
         static readonly CommandDescriptor CdCalculator = new CommandDescriptor
