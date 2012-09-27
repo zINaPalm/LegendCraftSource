@@ -151,7 +151,7 @@ THE SOFTWARE.*/
                                     }
                                     else
                                     {
-                                        player.Message("Answer is not a whole number. Please make sure both intigers being added are whole numbers.");
+                                        player.Message("Answer is not a whole number. Please make sure both integers being added are whole numbers.");
                                         return;
                                     }
                                 }
@@ -172,7 +172,7 @@ THE SOFTWARE.*/
                                     }
                                     else
                                     {
-                                        player.Message("Answer is not a whole number. Please make sure both intigers being subtracted are whole numbers.");
+                                        player.Message("Answer is not a whole number. Please make sure both integers being subtracted are whole numbers.");
                                         return;
                                     }
                                 }
@@ -194,7 +194,7 @@ THE SOFTWARE.*/
                                     }
                                     else
                                     {
-                                        player.Message("Answer is not a whole number. Please make sure both intigers being multiplied are whole numbers.");
+                                        player.Message("Answer is not a whole number. Please make sure both integers being multiplied are whole numbers.");
                                         return;
                                     }
                                 }
@@ -223,7 +223,7 @@ THE SOFTWARE.*/
                                     }
                                     else
                                     {
-                                        player.Message("Answer is not a whole number. Please make sure both intigers being divided are whole numbers.");
+                                        player.Message("Answer is not a whole number. Please make sure both integers being divided are whole numbers.");
                                         return;
                                     }
                                 }
@@ -293,7 +293,7 @@ THE SOFTWARE.*/
                     "Promos: Displays the amount of players the user has promote.d\n" +
                     "Bans: Displays the amount of players the user has banned.\n" +
                     "Kicks: Displays the amount of players the user has kicked.\n" +
-                    "Kicks: Displays the amount of blocks the user has modified.\n" +
+                    "Blocks: Displays the amount of blocks the user has modified.\n" +
                     "Funfact: Displays a funfact.\n");
             }
 
@@ -382,7 +382,7 @@ THE SOFTWARE.*/
                                       "&fAlmonds are a member of the peach family.",
                                       "&fAn ostrich's eye is bigger than it's brain.",
                                       "&fA dime has 118 ridges around the edge.",
-                                      "&fPeanuts are one of the ingredients of dinamite.",
+                                      "&fPeanuts are one of the ingredients of dynamite.",
                                       "&fTwo thirds of the world's eggplant is grown in New Jersey.",
                                       "&fNo piece of paper can be folded in half more than 7 times.",
                                       "&fVenus is the only planet that rotates clockwise.",
