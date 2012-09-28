@@ -5,6 +5,7 @@ Add: /Calculator
 Add: /UndoAll
 Add: Several Command Aliases
 Add: /GPS
+Add: $ass and a filter
 Add: MIT Liscence added to software and README
 Change: /fortuncookie given more options 
 Change: ServerGUI now has no 800craft text
