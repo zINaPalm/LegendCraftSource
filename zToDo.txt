@@ -6,8 +6,8 @@ Cmd Calculator - Finished.
 Remove HeartBeat Saver text from ServerGUI - Not started.
 Cmd FortuneCookie - Finished.
 Add Economy - Finished.
-Release LegendCraft v1.8.0 - In progress.
-Make a ToDo List - Finished.
+Release LegendCraft v1.7.0 - In progress.
+Make a ToDo List - Finished.  :D 
 Add Dingus's New Building Command - Cancelled.
 UndoAll - Finished.
 Add UndoAll to Banall - Finished.
