@@ -1,10 +1,11 @@
 ToDo:
 
 Remove version from ConfigGUI - Not started.
-Cmd LeBot - In progress.
+Cmd LeBot - Finished.
 Cmd Calculator - Finished.
 Remove HeartBeat Saver text from ServerGUI - Not started.
 Cmd FortuneCookie - Finished.
+Add Economy - Finished.
 Release LegendCraft v1.8.0 - In progress.
 Make a ToDo List - Finished.
 Add Dingus's New Building Command - Cancelled.
