@@ -55,23 +55,23 @@ namespace fCraft {
             CommandManager.RegisterCommand( CdSpectate );
             CommandManager.RegisterCommand( CdUnspectate );
 
-            CommandManager.RegisterCommand(CdSlap);
-            CommandManager.RegisterCommand(CdTPZone);
-            CommandManager.RegisterCommand(CdBasscannon);
-            CommandManager.RegisterCommand(CdKill);            
-            CommandManager.RegisterCommand(CdTempBan);
-            CommandManager.RegisterCommand(CdWarn);
-            CommandManager.RegisterCommand(CdUnWarn);
-            CommandManager.RegisterCommand(CdDisconnect);            
-            CommandManager.RegisterCommand(CdImpersonate);
-            CommandManager.RegisterCommand(CdImmortal);
-            CommandManager.RegisterCommand(CdTitle);
+            CommandManager.RegisterCommand( CdSlap );
+            CommandManager.RegisterCommand( CdTPZone );
+            CommandManager.RegisterCommand( CdBasscannon );
+            CommandManager.RegisterCommand( CdKill );            
+            CommandManager.RegisterCommand( CdTempBan );
+            CommandManager.RegisterCommand( CdWarn );
+            CommandManager.RegisterCommand( CdUnWarn );
+            CommandManager.RegisterCommand( CdDisconnect );            
+            CommandManager.RegisterCommand( CdImpersonate );
+            CommandManager.RegisterCommand( CdImmortal );
+            CommandManager.RegisterCommand( CdTitle );
            
-            CommandManager.RegisterCommand(CdMuteAll);
-            CommandManager.RegisterCommand(CdAssassinate);
-            CommandManager.RegisterCommand(CdPunch);
-            CommandManager.RegisterCommand(CdBanAll);
-            CommandManager.RegisterCommand(CdEconomy);
+            CommandManager.RegisterCommand( CdMuteAll );
+            CommandManager.RegisterCommand( CdAssassinate );
+            CommandManager.RegisterCommand( CdPunch );
+            CommandManager.RegisterCommand( CdBanAll );
+            CommandManager.RegisterCommand( CdEconomy );
 
         }
         #region LegendCraft
@@ -146,8 +146,7 @@ THE SOFTWARE.*/
                     else
                     {
                         player.Message("&eAre you sure you want to give {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
-                        String confirmation = cmd.Next();
-                        if (confirmation == "ok")
+                        if (cmd.IsConfirmed)
                         {
                             //actually give the player the money
                             int tNewMoney = target.Info.Money + amountnum;
@@ -191,8 +190,7 @@ THE SOFTWARE.*/
                     else
                     {
                         player.Message("&eAre you sure you want to take &c{1} &ebits from {0}? Type /ok to continue.", target.ClassyName, amountnum);
-                        String confirmation = cmd.Next();
-                        if (confirmation == "ok")
+                        if (cmd.IsConfirmed)
                         {
                             //actually give the player the money
                             int tNewMoney = target.Info.Money - amountnum;
@@ -234,8 +232,7 @@ THE SOFTWARE.*/
                         else
                         {
                             player.Message("&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
-                            String confirmation = cmd.Next();
-                            if (confirmation == "ok")
+                            if (cmd.IsConfirmed)
                             {
                                 //show him da monai
                                 int pNewMoney = player.Info.Money - amountnum;

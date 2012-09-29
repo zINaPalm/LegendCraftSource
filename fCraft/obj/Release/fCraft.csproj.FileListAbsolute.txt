@@ -18,3 +18,5 @@ C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\bin\release\fCraft.pdb
 C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\fCraft\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\fCraft\obj\Release\fCraft.dll
 C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\fCraft\obj\Release\fCraft.pdb
+C:\Users\Jonah\LegendCraftSource\fCraft\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Jonah\LegendCraftSource\fCraft\obj\Release\fCraft.dll
