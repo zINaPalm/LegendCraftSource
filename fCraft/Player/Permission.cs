@@ -259,6 +259,12 @@ namespace fCraft {
         LeBot,
 
         ///<summary>Permission to use manage message blocks</summar>
-        MessageBlock
+        MessageBlock,
+
+        ///<summary>Permission to use LegendCraft Economy</summary>
+        Economy,
+
+        ///<summary>Permission to manage the economy. (Use /give and /take)</summary>
+        ManageEconomy
     }
 }

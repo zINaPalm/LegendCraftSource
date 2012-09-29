@@ -13,6 +13,10 @@ namespace fCraft {
     public sealed partial class PlayerInfo : IClassy {
         public const int MinFieldCount = 24;
 
+        ///<summary> Player's amount of bits.</summary>
+        [CanBeNull]
+        public int Money;
+
         /// <summary> Player's Minecraft account name. </summary>
         [NotNull]
         public string Name { get; internal set; }
