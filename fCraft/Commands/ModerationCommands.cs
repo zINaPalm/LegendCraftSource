@@ -240,7 +240,7 @@ THE SOFTWARE.*/
                                 //show him da monai
                                 int pNewMoney = player.Info.Money - amountnum;
                                 int tNewMoney = target.Info.Money + amountnum;
-                                player.Message("&eYou have paid {0} &C${1}", target.ClassyName, amountnum);
+                                player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
                                 player.Info.Money = pNewMoney;
                                 target.Info.Money = tNewMoney;
                             }
