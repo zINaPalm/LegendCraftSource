@@ -105,7 +105,7 @@ THE SOFTWARE.*/
             Usage = "/Economy [pay/give/take/show] [playername] [pay/take/give: amount]",
             Help = "&SEconomy commands for LegendCraft. Show will show you the amount of money a player has," +
             "pay will pay that player an amount of bits," +
-            "and give/take will give/take bits from or to a player. WARING, give and take will change your server's inflation.",
+            "and give/take will give/take bits from or to a player. WARNING, give and take will change your server's inflation.",
             Handler = EconomyHandler
         };
 

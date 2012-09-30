@@ -15,7 +15,7 @@ namespace fCraft {
 
         ///<summary> Player's amount of bits.</summary>
         [CanBeNull]
-        public int Money;
+        public int Money = 0;
 
         /// <summary> Player's Minecraft account name. </summary>
         [NotNull]
@@ -456,7 +456,7 @@ namespace fCraft {
             if( fields[13].Length > 1 || !IPAddress.TryParse( fields[13], out info.LastFailedLoginIP ) ) { // LEGACY
                 info.LastFailedLoginIP = IPAddress.None;
             }
-            // skip 14
+            // if( fields[14].Length > 0 ) Int32.TryParse( fields[14], out info.Money);
 
             fields[15].ToDateTime( ref info.FirstLoginDate );
 
@@ -988,7 +988,9 @@ namespace fCraft {
             LastFailedLoginDate.ToUnixTimeString( sb ).Append( ',' ); // 12
 
             if( !LastFailedLoginIP.Equals( IPAddress.None ) ) sb.Append( LastFailedLoginIP.ToString() ); // 13
-            sb.Append( ',', 2 ); // skip 14
+            sb.Append( ',' );
+            if (Money > 0) sb.Digits(Money); // 14
+            sb.Append(',');
 
             FirstLoginDate.ToUnixTimeString( sb ).Append( ',' ); // 15
             LastLoginDate.ToUnixTimeString( sb ).Append( ',' ); // 16
@@ -1135,6 +1137,7 @@ namespace fCraft {
             } else {
                 writer.Write( (uint)TotalTime.ToSeconds() ); // 22
             }
+            Write7BitEncodedInt(writer, Money); // field 14
             Write7BitEncodedInt( writer, BlocksBuilt ); // 23
             Write7BitEncodedInt( writer, BlocksDeleted ); // 24
             writer.Write( BlocksDrawn > 0 );

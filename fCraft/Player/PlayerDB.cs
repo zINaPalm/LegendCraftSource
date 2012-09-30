@@ -39,7 +39,7 @@ namespace fCraft {
         const string Header = "fCraft PlayerDB | Row format: " +
                               "Name,IPAddress,Rank,RankChangeDate,RankChangedBy,Banned,BanDate,BannedBy," +
                               "UnbanDate,UnbannedBy,BanReason,UnbanReason,LastFailedLoginDate," +
-                              "LastFailedLoginIP,UNUSED,FirstLoginDate,LastLoginDate,TotalTime," +
+                              "LastFailedLoginIP,Money,FirstLoginDate,LastLoginDate,TotalTime," +
                               "BlocksBuilt,BlocksDeleted,TimesVisited,MessagesWritten,PromoCount,UNUSED," +
                               "PreviousRank,RankChangeReason,TimesKicked,TimesKickedOthers," +
                               "TimesBannedOthers,ID,RankChangeType,LastKickDate,LastSeen,BlocksDrawn," +
