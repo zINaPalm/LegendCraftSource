@@ -122,7 +122,7 @@ namespace fCraft {
         public static void InitLibrary( [NotNull] IEnumerable<string> rawArgs ) {
             if( rawArgs == null ) throw new ArgumentNullException( "rawArgs" );
             if( libraryInitialized ) {
-                throw new InvalidOperationException( "800Craft library is already initialized" );
+                throw new InvalidOperationException( "LegendCraft library is already initialized" );
             }
 
             ServicePointManager.Expect100Continue = false;
@@ -418,21 +418,7 @@ namespace fCraft {
             // garbage collection
             gcTask = Scheduler.NewTask( DoGC ).RunForever( GCInterval, TimeSpan.FromSeconds( 45 ) );
 
-            Heartbeat.Start();
-            if( ConfigKey.HeartbeatToWoMDirect.Enabled() ) {
-                //Heartbeat.SetWoMDirectSettings();
-                if( ExternalIP == null ) {
-                    Logger.Log( LogType.SystemActivity,
-                                "WoM Direct heartbeat is enabled. To edit your server's appearence on the server list, " +
-                                "see https://direct.worldofminecraft.com/server.php?port={0}&salt={1}",
-                                Port, Heartbeat.Salt );
-                } else {
-                    Logger.Log( LogType.SystemActivity,
-                                "WoM Direct heartbeat is enabled. To edit your server's appearence on the server list, " +
-                                "see https://direct.worldofminecraft.com/server.php?ip={0}&port={1}&salt={2}",
-                                ExternalIP, Port, Heartbeat.Salt );
-                }
-            }
+
 
             if( ConfigKey.RestartInterval.GetInt() > 0 ) {
                 TimeSpan restartIn = TimeSpan.FromSeconds( ConfigKey.RestartInterval.GetInt() );
