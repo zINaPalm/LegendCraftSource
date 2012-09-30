@@ -134,6 +134,7 @@ THE SOFTWARE.*/
                 }
                 if (target == null)
                 {
+                    player.Message("&ePlease type in a player's name to give bits towards.");
                     return;
                 }
                 else
@@ -178,6 +179,7 @@ THE SOFTWARE.*/
                 }
                 if (target == null)
                 {
+                    player.Message("&ePlease type in a player's name to take bits away from.");
                     return;
                 }
                 else
@@ -216,41 +218,41 @@ THE SOFTWARE.*/
                     player.Message("&ePlease type in a player's name to pay bits towards.");
                     return;
                 }
+
+                if (target == null)
+                {
+                    player.Message("&ePlease type in a player's name to pay bits towards.");
+                    return;
+                }
                 else
                 {
-                    if (target == null)
+                    if (!int.TryParse(amount, out amountnum))
                     {
+                        player.Message("&eThe amount must be a number!");
                         return;
                     }
                     else
                     {
-                        if (!int.TryParse(amount, out amountnum))
+                        player.Message("&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
+                        if (cmd.IsConfirmed)
                         {
-                            player.Message("&eThe amount must be a number!");
-                            return;
+                            //show him da monai
+                            int pNewMoney = player.Info.Money - amountnum;
+                            int tNewMoney = target.Info.Money + amountnum;
+                            player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
+                            player.Info.Money = pNewMoney;
+                            target.Info.Money = tNewMoney;
                         }
                         else
                         {
-                            player.Message("&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
-                            if (cmd.IsConfirmed)
-                            {
-                                //show him da monai
-                                int pNewMoney = player.Info.Money - amountnum;
-                                int tNewMoney = target.Info.Money + amountnum;
-                                player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
-                                player.Info.Money = pNewMoney;
-                                target.Info.Money = tNewMoney;
-                            }
-                            else
-                            {
-                                //dun show him da monai
-                                player.Message("&eMoney transaction was aborted.");
-                                return;
-                            }
+                            //dun show him da monai
+                            player.Message("&eMoney transaction was aborted.");
+                            return;
                         }
                     }
                 }
             }
+            
             else if (option == "show")
             {
                 Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
@@ -259,18 +261,18 @@ THE SOFTWARE.*/
                     player.Message("&ePlease type in a player's name to see how many bits they have.");
                     return;
                 }
+
+                if (target == null)
+                {
+                    player.Message("&ePlease type in a player's name to see how many bits they have.");
+                    return;
+                }
                 else
                 {
-                    if (target == null)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        //actually show how much money that person has
-                        player.Message("&e{0} has &C{1} &ebits currently!", target.ClassyName, target.Info.Money);
-                    }
+                    //actually show how much money that person has
+                    player.Message("&e{0} has &C{1} &ebits currently!", target.ClassyName, target.Info.Money);
                 }
+                
             }
             else
             {
