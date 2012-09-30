@@ -1,15 +1,1 @@
 ToDo:
-
-Remove version from ConfigGUI - Not started.
-Cmd LeBot - Finished.
-Cmd Calculator - Finished.
-Remove HeartBeat Saver text from ServerGUI - Finished.
-Cmd FortuneCookie - Finished.
-Add Economy - Finished.
-Release LegendCraft v1.7.0 - In progress.
-Make a ToDo List - Finished.  :D 
-Add banx2 - Finished.
-UndoAll - Finished.
-Add UndoAll to Banall - Finished.
-Add License - Finished.
-Add GPS - Finished.
