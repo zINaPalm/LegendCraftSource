@@ -372,7 +372,7 @@ THE SOFTWARE.*/
             {
                 String Mods = player.Info.BlocksDrawn.ToString() + player.Info.BlocksBuilt.ToString() + player.Info.BlocksDeleted.ToString();
                 Server.Message("{0}&f: LeBot, Blocks", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has modified " + Mods + " blocks.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0} &fhas modified " + Mods + " blocks.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "funfact")
