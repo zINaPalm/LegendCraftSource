@@ -370,7 +370,7 @@ THE SOFTWARE.*/
             }
             else if (option == "blocks")
             {
-                String Mods = player.Info.BlocksDrawn.ToString() + player.Info.BlocksBuilt.ToString() + player.Info.BlocksDeleted.ToString();
+                long Mods = player.Info.BlocksDrawn + player.Info.BlocksBuilt + player.Info.BlocksDeleted;
                 Server.Message("{0}&f: LeBot, Blocks", player.ClassyName);
                 Server.Message("&0LeBot&f: {0} &fhas modified " + Mods + " blocks.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
