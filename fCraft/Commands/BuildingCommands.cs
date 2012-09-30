@@ -98,7 +98,7 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdCenter);
 
             CommandManager.RegisterCommand(CdUndoAll);
-            CommandManager.RegisterCommand(CdMessageBlock);
+            //CommandManager.RegisterCommand(CdMessageBlock);
             CommandManager.RegisterCommand(CdBanX2);
         }
         #region LegendCraft
@@ -170,7 +170,7 @@ THE SOFTWARE.*/
                 player.MessageNoPlayer(targetName);
                 return;
             }
-            UndoPlayerHandler2(player, new Command("/undox " + target.Name + " 10000000"));
+            UndoPlayerHandler(player, new Command("/undox " + target.Name + " 10000000"));
         }
         
         static readonly CommandDescriptor CdBanX2 = new CommandDescriptor
@@ -217,7 +217,7 @@ THE SOFTWARE.*/
             }
             else
             {
-                UndoPlayerHandler2(player, new Command("/undox " + target.Name + " 5000"));
+                UndoPlayerHandler(player, new Command("/undox " + target.Name + " 5000"));
 
                 string reason = cmd.NextAll();
 
@@ -659,7 +659,7 @@ THE SOFTWARE.*/
                 CdBanx.PrintUsage(player);
                 return;
             }else{
-                UndoPlayerHandler2(player, new Command("/undox " + target.Name + " 100000"));
+                UndoPlayerHandler(player, new Command("/undox " + target.Name + " 100000"));
 
                 string reason = cmd.NextAll();
 
