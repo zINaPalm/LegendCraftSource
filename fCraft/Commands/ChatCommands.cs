@@ -347,25 +347,25 @@ THE SOFTWARE.*/
             {
                 Server.Message("{0}&f: LeBot, Time", player.ClassyName);
                 TimeSpan time = TimeSpan.FromHours(player.Info.TotalTime.TotalHours);
-                Server.Message("&0LeBot&f: {0} has spent a total of " + time.ToMiniString() + " on {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
+                Server.Message("&0LeBot&f: {0} &fhas spent a total of " + time.ToMiniString() + " &fon {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "promos")
             {
                 Server.Message("{0}&f: LeBot, Promos", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0} &fhas promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "bans")
             {
                 Server.Message("{0}&f: LeBot, Bans", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0} &fhas banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "kicks")
             {
                 Server.Message("{0}&f: LeBot, Kicks", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0} &fhas kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "blocks")
@@ -389,6 +389,8 @@ THE SOFTWARE.*/
                                       "&fAmerican Airlines saved $40,000 in 1987 by eliminating 1 olive from each salad served in first-class.",
                                       "&fA duck's quack doesn't echo and no one knows why..",
                                       "&fWomen blink nearly twice as much as men.",
+                                      "&fIn 1998, more fast-food employees were murdered on the job than police officers.", 
+                                      "&fFortune cookies were actually invented in America, in 1918, by Charles Jung.", 
                                       "&fTYPEWRITER is the longest word that can be made using the letters only on one row of the keyboard."};
                 Random RandfactString = new Random();
                 Server.Message("&0LeBot&f: " + factStrings[RandfactString.Next(0, factStrings.Length)]);
