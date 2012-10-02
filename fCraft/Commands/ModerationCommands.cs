@@ -148,7 +148,7 @@ THE SOFTWARE.*/
                         }
                         else
                         {
-                            player.Message("&eAre you sure you want to give {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
+                            player.Confirm( cmd, "&eAre you sure you want to give {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
                             if (cmd.IsConfirmed)
                             {
                                 //actually give the player the money
@@ -193,7 +193,7 @@ THE SOFTWARE.*/
                         }
                         else
                         {
-                            player.Message("&eAre you sure you want to take &c{1} &ebits from {0}? Type /ok to continue.", target.ClassyName, amountnum);
+                            player.Confirm(cmd, "&eAre you sure you want to take &c{1} &ebits from {0}? Type /ok to continue.", target.ClassyName, amountnum);
                             if (cmd.IsConfirmed)
                             {
                                 //actually give the player the money
@@ -235,7 +235,7 @@ THE SOFTWARE.*/
                         }
                         else
                         {
-                            player.Message("&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
+                            player.Confirm(cmd, "&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
                             if (cmd.IsConfirmed)
                             {
                                 //show him da monai
@@ -289,7 +289,6 @@ THE SOFTWARE.*/
             }
         }
         #endregion
-
         static readonly CommandDescriptor CdBanAll = new CommandDescriptor
         {
             Name = "BanAll",
