@@ -202,7 +202,7 @@ THE SOFTWARE.*/
                             if (op == "/")
                             {
 
-                                long div = no1 * no2;
+                                long div = no1 / no2;
                                 if (div < 0 | no1 < 0 | no2 < 0)
                                 {
                                     player.Message("Negative Number Detected, please choose froma  whole number.");
@@ -214,11 +214,11 @@ THE SOFTWARE.*/
                                     {
                                         if (no1 % no2 == 0)
                                         {
-                                            player.Message("{0}/{1}={2}", no1, no2, div);
+                                            player.Message("&0Calculator: &e{0}/{1}={2}", no1, no2, div);
                                         }
                                         else
                                         {
-                                            player.Message("{0}/{1}={2}, rounded", no1, no2, div);
+                                            player.Message("&0Calculator: &e{0}/{1}={2}, rounded", no1, no2, div);
                                         }
                                     }
                                     else
