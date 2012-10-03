@@ -37,6 +37,7 @@ namespace fCraft {
             rawMessage = rawMessage.Replace("$time", DateTime.Now.ToString());
             rawMessage = rawMessage.Replace("$money", player.Info.Money.ToString());
             rawMessage = rawMessage.Replace("$ass", "You, my good sir, are an &cAss&f");
+            rawMessage = rawMessage.Replace("$mad", "You mad, bro?");
             if (!player.Can(Permission.ChatWithCaps))
             {
                 int caps = 0;
