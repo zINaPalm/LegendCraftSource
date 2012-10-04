@@ -1,27 +1,31 @@
-﻿// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
+// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace fCraft {
-    static class ChatCommands {
+namespace fCraft
+{
+    static class ChatCommands
+    {
+        const int PlayersPerPage = 20;
 
-        public static void Init() {
-            CommandManager.RegisterCommand( CdSay );
-            CommandManager.RegisterCommand( CdStaff );
+        public static void Init()
+        {
+            CommandManager.RegisterCommand(CdSay);
+            CommandManager.RegisterCommand(CdStaff);
 
-            CommandManager.RegisterCommand( CdIgnore );
-            CommandManager.RegisterCommand( CdUnignore );
+            CommandManager.RegisterCommand(CdIgnore);
+            CommandManager.RegisterCommand(CdUnignore);
 
-            CommandManager.RegisterCommand( CdMe );
+            CommandManager.RegisterCommand(CdMe);
 
-            CommandManager.RegisterCommand( CdRoll );
+            CommandManager.RegisterCommand(CdRoll);
 
-            CommandManager.RegisterCommand( CdDeafen );
+            CommandManager.RegisterCommand(CdDeafen);
 
-            CommandManager.RegisterCommand( CdClear );
+            CommandManager.RegisterCommand(CdClear);
 
-            CommandManager.RegisterCommand( CdTimer );
+            CommandManager.RegisterCommand(CdTimer);
 
             CommandManager.RegisterCommand(cdReview);
             CommandManager.RegisterCommand(CdAdminChat);
@@ -33,7 +37,7 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdRageQuit);
             CommandManager.RegisterCommand(CdQuit);
             CommandManager.RegisterCommand(CdModerate);
-            
+
             CommandManager.RegisterCommand(CdBroFist);
             CommandManager.RegisterCommand(CdJelly);
             CommandManager.RegisterCommand(CdMad);
@@ -44,13 +48,13 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdLeBot);
             CommandManager.RegisterCommand(CdCalculator);
             CommandManager.RegisterCommand(CdGPS);
-            
+
 
             Player.Moved += new EventHandler<Events.PlayerMovedEventArgs>(Player_IsBack);
         }
         #region LegendCraft
-/* Copyright (c) <2012> <LeChosenOne, DingusBingus>
-   Permission is hereby granted, free of charge, to any person obtaining a copy
+        /* Copyright (c) <2012> <LeChosenOne, DingusBingus>
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -67,11 +71,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
-        
+
         static readonly CommandDescriptor CdGPS = new CommandDescriptor
         {
             Name = "GPS",
-            Category = CommandCategory.Chat ,
+            Category = CommandCategory.Chat,
             Permissions = new Permission[] { Permission.Chat },
             IsConsoleSafe = false,
             Usage = "/GPS",
@@ -89,7 +93,7 @@ THE SOFTWARE.*/
         static readonly CommandDescriptor CdCalculator = new CommandDescriptor
         {
             Name = "Calculator",
-            Aliases = new[] { "Calc"},
+            Aliases = new[] { "Calc" },
             Category = CommandCategory.Chat | CommandCategory.Math,
             Permissions = new Permission[] { Permission.Chat },
             IsConsoleSafe = true,
@@ -105,7 +109,7 @@ THE SOFTWARE.*/
             String op = cmd.Next();
             String numbertwo = cmd.Next();
             int no1, no2;
-            
+
             if (numberone == null || numbertwo == null || op == null)
             {
                 CdCalculator.PrintUsage(player);
@@ -128,123 +132,123 @@ THE SOFTWARE.*/
             if (player.Can(Permission.Chat))
             {
 
-                    if (numberone != null | op != null | numbertwo != null)
+                if (numberone != null | op != null | numbertwo != null)
+                {
+
+
+                    if (op == "+" | op == "-" | op == "*" | op == "/")
                     {
 
-
-                        if (op == "+" | op == "-" | op == "*" | op == "/")
+                        if (op == "+")
                         {
-
-                            if (op == "+")
+                            long add = no1 + no2;
+                            if (add < 0 | no1 < 0 | no2 < 0)
                             {
-                                long add = no1 + no2;
-                                if (add < 0 | no1 < 0 | no2 < 0)
-                                {
-                                    player.Message("Negative Number Detected, please choose from a whole number.");
-                                    return;
-                                }
-                                else
-                                {
-                                    if (add % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
-                                    {
-                                        player.Message("&0Calculator: &e{0}+{1}={2}", no1, no2, add);
-                                    }
-                                    else
-                                    {
-                                        player.Message("Answer is not a whole number. Please make sure both integers being added are whole numbers.");
-                                        return;
-                                    }
-                                }
+                                player.Message("Negative Number Detected, please choose from a whole number.");
+                                return;
                             }
-                            if (op == "-")
+                            else
                             {
-                                long subtr = no1 - no2;
-                                if (subtr < 0 | no1 < 0 | no2 < 0)
+                                if (add % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
                                 {
-                                    player.Message("Negative Number Detected, please choose from a whole number.");
-                                    return;
+                                    player.Message("&0Calculator: &e{0}+{1}={2}", no1, no2, add);
                                 }
                                 else
                                 {
-                                    if (subtr % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
-                                    {
-                                        player.Message("&0Calculator: &e{0}-{1}={2}", no1, no2, subtr);
-                                    }
-                                    else
-                                    {
-                                        player.Message("Answer is not a whole number. Please make sure both integers being subtracted are whole numbers.");
-                                        return;
-                                    }
-                                }
-                            }
-                            if (op == "*")
-                            {
-
-                                long mult = no1 * no2;
-                                if (mult < 0 | no1 < 0 | no2 < 0)
-                                {
-                                    player.Message("Negative Number Detected, please choose from a whole number.");
+                                    player.Message("Answer is not a whole number. Please make sure both integers being added are whole numbers.");
                                     return;
-                                }
-                                else
-                                {
-                                    if (mult % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
-                                    {
-                                        player.Message("&0Calculator: &e{0}*{1}={2}", no1, no2, mult);
-                                    }
-                                    else
-                                    {
-                                        player.Message("Answer is not a whole number. Please make sure both integers being multiplied are whole numbers.");
-                                        return;
-                                    }
-                                }
-                            }
-                            if (op == "/")
-                            {
-
-                                long div = no1 / no2;
-                                if (div < 0 | no1 < 0 | no2 < 0)
-                                {
-                                    player.Message("Negative Number Detected, please choose froma  whole number.");
-                                    return;
-                                }
-                                else
-                                {
-                                    if (no1 % 2 == 0 | no2 % 2 == 0)
-                                    {
-                                        if (no1 % no2 == 0)
-                                        {
-                                            player.Message("&0Calculator: &e{0}/{1}={2}", no1, no2, div);
-                                        }
-                                        else
-                                        {
-                                            player.Message("&0Calculator: &e{0}/{1}={2}, rounded", no1, no2, div);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        player.Message("Answer is not a whole number. Please make sure both integers being divided are whole numbers.");
-                                        return;
-                                    }
                                 }
                             }
                         }
-                        else
+                        if (op == "-")
                         {
-                            player.Message("Invalid Operator. Please choose from '+' , '-' , '*' , or '/'");
-                            return;
+                            long subtr = no1 - no2;
+                            if (subtr < 0 | no1 < 0 | no2 < 0)
+                            {
+                                player.Message("Negative Number Detected, please choose from a whole number.");
+                                return;
+                            }
+                            else
+                            {
+                                if (subtr % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
+                                {
+                                    player.Message("&0Calculator: &e{0}-{1}={2}", no1, no2, subtr);
+                                }
+                                else
+                                {
+                                    player.Message("Answer is not a whole number. Please make sure both integers being subtracted are whole numbers.");
+                                    return;
+                                }
+                            }
+                        }
+                        if (op == "*")
+                        {
+
+                            long mult = no1 * no2;
+                            if (mult < 0 | no1 < 0 | no2 < 0)
+                            {
+                                player.Message("Negative Number Detected, please choose from a whole number.");
+                                return;
+                            }
+                            else
+                            {
+                                if (mult % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
+                                {
+                                    player.Message("&0Calculator: &e{0}*{1}={2}", no1, no2, mult);
+                                }
+                                else
+                                {
+                                    player.Message("Answer is not a whole number. Please make sure both integers being multiplied are whole numbers.");
+                                    return;
+                                }
+                            }
+                        }
+                        if (op == "/")
+                        {
+
+                            long div = no1 / no2;
+                            if (div < 0 | no1 < 0 | no2 < 0)
+                            {
+                                player.Message("Negative Number Detected, please choose froma whole number.");
+                                return;
+                            }
+                            else
+                            {
+                                if (no1 % 2 == 0 | no2 % 2 == 0)
+                                {
+                                    if (no1 % no2 == 0)
+                                    {
+                                        player.Message("&0Calculator: &e{0}/{1}={2}", no1, no2, div);
+                                    }
+                                    else
+                                    {
+                                        player.Message("&0Calculator: &e{0}/{1}={2}, rounded", no1, no2, div);
+                                    }
+                                }
+                                else
+                                {
+                                    player.Message("Answer is not a whole number. Please make sure both integers being divided are whole numbers.");
+                                    return;
+                                }
+                            }
                         }
                     }
                     else
                     {
-                        CdCalculator.PrintUsage(player);
+                        player.Message("Invalid Operator. Please choose from '+' , '-' , '*' , or '/'");
+                        return;
                     }
                 }
-        
+                else
+                {
+                    CdCalculator.PrintUsage(player);
+                }
             }
-        
-            
-        
+
+        }
+
+
+
         #endregion
 
         #region LeBot
@@ -256,7 +260,7 @@ THE SOFTWARE.*/
             Permissions = new Permission[] { Permission.LeBot },
             IsConsoleSafe = false,
             Usage = "/LeBot Option",
-            Help = "LegendCraft Bot. Options are [help], [spleef], [go], [server], [joke], [time], [promos], [bans], [kicks], [blocks], and [funfact].",
+            Help = "LegendCraft Bot. Options are [help], [spleef], [go], [server], [joke], [time], [promos], [bans], [kicks], [players], [blocks], and [funfact].",
             NotRepeatable = true,
             Handler = LeBotHandler,
         };
@@ -280,7 +284,7 @@ THE SOFTWARE.*/
             }
             if (option == null)
             {
-                player.Message("Usage: /LeBot Option. Options are [help], [spleef], [go], [server], [joke], [time], [promos], [bans], [kicks], [blocks], and [funfact].");
+                player.Message("LegendCraft Bot. Options are [help], [spleef], [go], [server], [joke], [time], [promos], [bans], [kicks], [players], [blocks], and [funfact].");
                 return;
             }
             else if (option == "help")
@@ -389,16 +393,83 @@ THE SOFTWARE.*/
                                       "&fAmerican Airlines saved $40,000 in 1987 by eliminating 1 olive from each salad served in first-class.",
                                       "&fA duck's quack doesn't echo and no one knows why..",
                                       "&fWomen blink nearly twice as much as men.",
-                                      "&fIn 1998, more fast-food employees were murdered on the job than police officers.", 
-                                      "&fFortune cookies were actually invented in America, in 1918, by Charles Jung.", 
+                                      "&fIn 1998, more fast-food employees were murdered on the job than police officers.",
+                                      "&fFortune cookies were actually invented in America, in 1918, by Charles Jung.",
                                       "&fTYPEWRITER is the longest word that can be made using the letters only on one row of the keyboard."};
                 Random RandfactString = new Random();
                 Server.Message("&0LeBot&f: " + factStrings[RandfactString.Next(0, factStrings.Length)]);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
+            else if (option == "players")
+            {
+                string param = cmd.Next();
+                Player[] players;
+                string worldName = null;
+                string qualifier;
+                int offset = 0;
+                players = Server.Players;
+                qualifier = "online";
+                
+                if (param == null || Int32.TryParse(param, out offset))
+                {
+                    
+                    if (cmd.HasNext)
+                    {
+                        player.Message("/LeBot players");
+                        return;
+                    }
+                }
+
+                if (players.Length > 0)
+                {
+                    // Filter out hidden players, and sort
+                    Player[] visiblePlayers = players.Where(player.CanSee)
+                                                     .OrderBy(p => p, PlayerListSorter.Instance)
+                                                     .ToArray();
+
+                    if (visiblePlayers.Length == 0)
+                    {
+                        Server.Message("&0LeBot&f: There are no players {0}", qualifier);
+
+                    }
+                    else if (visiblePlayers.Length <= PlayersPerPage || player.IsSuper)
+                    {
+                        Server.Message("&S ", "&SThere are {0} players {1}: {2}",
+                                                visiblePlayers.Length, qualifier, visiblePlayers.JoinToClassyString());
+                    }
+                    else
+                    {
+                        if (offset >= visiblePlayers.Length)
+                        {
+                            offset = Math.Max(0, visiblePlayers.Length - PlayersPerPage);
+                        }
+                        Player[] playersPart = visiblePlayers.Skip(offset).Take(PlayersPerPage).ToArray();
+                        Server.Message("&S ", "&SPlayers {0}: {1}",
+                                                qualifier, playersPart.JoinToClassyString());
+
+                        if (offset + playersPart.Length < visiblePlayers.Length)
+                        {
+                            Server.Message("&0LeBot&f: Showing {0}-{1} (out of {2}). Next: &H/Lb Players {3}{1}",
+                                            offset + 1, offset + playersPart.Length,
+                                            visiblePlayers.Length,
+                                            (worldName == null ? "" : worldName + " "));
+                        }
+                        else
+                        {
+                            Server.Message("&0LeBot&f: Showing players {0}-{1} (out of {2}).",
+                                            offset + 1, offset + playersPart.Length,
+                                            visiblePlayers.Length);
+                        }
+                    }
+                }
+                else
+                {
+                    Server.Message("&0LeBot&f: There are no players {0}", qualifier);
+                }
+            }
             else
             {
-                player.Message("LegendCraft Bot. Options are [help], [spleef], [server], [joke], [time], [promos], [bans], [kicks], [blocks], and [funfact].");
+                player.Message("LegendCraft Bot. Options are [help], [spleef], [go], [server], [joke], [time], [promos], [bans], [kicks], [players], [blocks], and [funfact].");
                 return;
             }
 
@@ -506,7 +577,7 @@ THE SOFTWARE.*/
             if (target == null) return;
 
             if (player.Can(Permission.Slap, target.Info.Rank))
-            {   //Broadcasts a server meesage saying the player is muted, even thought they are not.
+            { //Broadcasts a server meesage saying the player is muted, even thought they are not.
                 Server.Players.CanSee(target).Except(target).Message("&sPlayer {0}&6*&s was muted by {1}&s for 999m.", target.ClassyName, player.ClassyName);
                 IRC.PlayerSomethingMessage(player, "muted", target, null);
                 target.Message("&sYou were muted by {0}&s for 999m.", player.ClassyName);
@@ -765,7 +836,7 @@ THE SOFTWARE.*/
 
         #region 800Craft
 
-        //Copyright (C) <2012>  <Jon Baker, Glenn Mariën and Lao Tszy>
+        //Copyright (C) <2012> <Jon Baker, Glenn Mariën and Lao Tszy>
 
         //This program is free software: you can redistribute it and/or modify
         //it under the terms of the GNU General Public License as published by
@@ -774,14 +845,14 @@ THE SOFTWARE.*/
 
         //This program is distributed in the hope that it will be useful,
         //but WITHOUT ANY WARRANTY; without even the implied warranty of
-        //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
         //GNU General Public License for more details.
 
         //You should have received a copy of the GNU General Public License
-        //along with this program.  If not, see <http://www.gnu.org/licenses/>.
+        //along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    
-            
+
+
         static readonly CommandDescriptor CdModerate = new CommandDescriptor
         {
             Name = "Moderate",
@@ -864,7 +935,7 @@ THE SOFTWARE.*/
                 }
             }
         }
-        
+
         static readonly CommandDescriptor CdQuit = new CommandDescriptor
         {
             Name = "Quitmsg",
@@ -893,7 +964,7 @@ THE SOFTWARE.*/
                 player.Message("Your quit message is now set to: {0}", Msg);
             }
         }
-       
+
 
         static readonly CommandDescriptor CdRageQuit = new CommandDescriptor
         {
@@ -915,7 +986,7 @@ THE SOFTWARE.*/
             {
                 Server.Players.Message("{0} &4Ragequit from the server", player.ClassyName);
                 player.Kick(Player.Console, "Ragequit", LeaveReason.RageQuit, false, false, false);
-                IRC.SendAction(player.ClassyName+ " &4Ragequit from the server");
+                IRC.SendAction(player.ClassyName + " &4Ragequit from the server");
                 return;
             }
 
@@ -923,7 +994,7 @@ THE SOFTWARE.*/
             {
                 Server.Players.Message("{0} &4Ragequit from the server: &C{1}",
                                 player.ClassyName, reason);
-                IRC.SendAction(player.ClassyName + " &WRagequit from the server: "+ reason);
+                IRC.SendAction(player.ClassyName + " &WRagequit from the server: " + reason);
                 player.Kick(Player.Console, reason, LeaveReason.RageQuit, false, false, false);
             }
         }
@@ -988,7 +1059,7 @@ THE SOFTWARE.*/
         {
             Name = ConfigKey.CustomChatName.GetString(),
             Category = CommandCategory.Chat,
-            Aliases = new [] { ConfigKey.CustomAliasName.GetString() },
+            Aliases = new[] { ConfigKey.CustomAliasName.GetString() },
             Permissions = new[] { Permission.Chat },
             IsConsoleSafe = true,
             NotRepeatable = true,
@@ -1033,16 +1104,20 @@ THE SOFTWARE.*/
         internal static void Away(Player player, Command cmd)
         {
             string msg = cmd.NextAll().Trim();
-            if (player.Info.IsMuted){
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
-            if (msg.Length > 0){
+            if (msg.Length > 0)
+            {
                 Server.Message("{0}&S &Eis away &9({1})",
                                   player.ClassyName, msg);
                 player.IsAway = true;
                 return;
-            }else{
+            }
+            else
+            {
                 Server.Players.Message("&S{0} &Eis away &9(Away From Keyboard)", player.ClassyName);
                 player.IsAway = true;
             }
@@ -1097,12 +1172,14 @@ THE SOFTWARE.*/
         internal static void PokeHandler(Player player, Command cmd)
         {
             string targetName = cmd.Next();
-            if (targetName == null){
+            if (targetName == null)
+            {
                 CdPoke.PrintUsage(player);
                 return;
             }
             Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
-            if (target == null){
+            if (target == null)
+            {
                 return;
             }
             if (target.Immortal)
@@ -1110,13 +1187,17 @@ THE SOFTWARE.*/
                 player.Message("&SYou failed to poke {0}&S, they are immortal", target.ClassyName);
                 return;
             }
-            if (target == player){
+            if (target == player)
+            {
                 player.Message("You cannot poke yourself.");
                 return;
             }
-            if (!Player.IsValidName(targetName)){
+            if (!Player.IsValidName(targetName))
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 target.Message("&8You were just poked by {0}",
                                   player.ClassyName);
                 player.Message("&8Successfully poked {0}", target.ClassyName);
@@ -1136,7 +1217,8 @@ THE SOFTWARE.*/
 
         internal static void Review(Player player, Command cmd)
         {
-            if (player.Info.IsMuted){
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
@@ -1148,7 +1230,8 @@ THE SOFTWARE.*/
             var ReviewerNames = Server.Players
                                          .CanBeSeen(player)
                                          .Where(r => r.Can(Permission.Promote, player.Info.Rank));
-            if (ReviewerNames.Count() > 0){
+            if (ReviewerNames.Count() > 0)
+            {
                 player.Message("&WOnline players who can review you: {0}", ReviewerNames.JoinToString(r => String.Format("{0}&S", r.ClassyName)));
                 return;
             }
@@ -1171,29 +1254,34 @@ THE SOFTWARE.*/
 
         internal static void AdminChat(Player player, Command cmd)
         {
-            if (player.Info.IsMuted){
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
-            if (DateTime.UtcNow < player.Info.MutedUntil){
+            if (DateTime.UtcNow < player.Info.MutedUntil)
+            {
                 player.Message("You are muted for another {0:0} seconds.",
                                 player.Info.MutedUntil.Subtract(DateTime.UtcNow).TotalSeconds);
                 return;
             }
             string message = cmd.NextAll().Trim();
-            if (message.Length > 0){
-                if (player.Can(Permission.UseColorCodes) && message.Contains("%")){
+            if (message.Length > 0)
+            {
+                if (player.Can(Permission.UseColorCodes) && message.Contains("%"))
+                {
                     message = Color.ReplacePercentCodes(message);
                 }
                 Chat.SendAdmin(player, message);
             }
         }
-        
+
         #endregion
 
         #region Say
 
-        static readonly CommandDescriptor CdSay = new CommandDescriptor {
+        static readonly CommandDescriptor CdSay = new CommandDescriptor
+        {
             Name = "Say",
             Category = CommandCategory.Chat,
             IsConsoleSafe = true,
@@ -1206,23 +1294,31 @@ THE SOFTWARE.*/
             Handler = SayHandler
         };
 
-        static void SayHandler( Player player, Command cmd ) {
-            if( player.Info.IsMuted ) {
+        static void SayHandler(Player player, Command cmd)
+        {
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
 
-            if( player.DetectChatSpam() ) return;
+            if (player.DetectChatSpam()) return;
 
-            if( player.Can( Permission.Say ) ) {
+            if (player.Can(Permission.Say))
+            {
                 string msg = cmd.NextAll().Trim();
-                if( msg.Length > 0 ) {
-                    Chat.SendSay( player, msg );
-                } else {
-                    CdSay.PrintUsage( player );
+                if (msg.Length > 0)
+                {
+                    Chat.SendSay(player, msg);
                 }
-            } else {
-                player.MessageNoAccess( Permission.Say );
+                else
+                {
+                    CdSay.PrintUsage(player);
+                }
+            }
+            else
+            {
+                player.MessageNoAccess(Permission.Say);
             }
         }
 
@@ -1231,7 +1327,8 @@ THE SOFTWARE.*/
 
         #region Staff
 
-        static readonly CommandDescriptor CdStaff = new CommandDescriptor {
+        static readonly CommandDescriptor CdStaff = new CommandDescriptor
+        {
             Name = "Staff",
             Aliases = new[] { "st" },
             Category = CommandCategory.Chat | CommandCategory.Moderation,
@@ -1244,17 +1341,20 @@ THE SOFTWARE.*/
             Handler = StaffHandler
         };
 
-        static void StaffHandler( Player player, Command cmd ) {
-            if( player.Info.IsMuted ) {
+        static void StaffHandler(Player player, Command cmd)
+        {
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
 
-            if( player.DetectChatSpam() ) return;
+            if (player.DetectChatSpam()) return;
 
             string message = cmd.NextAll().Trim();
-            if( message.Length > 0 ) {
-                Chat.SendStaff( player, message );
+            if (message.Length > 0)
+            {
+                Chat.SendStaff(player, message);
             }
         }
 
@@ -1263,7 +1363,8 @@ THE SOFTWARE.*/
 
         #region Ignore / Unignore
 
-        static readonly CommandDescriptor CdIgnore = new CommandDescriptor {
+        static readonly CommandDescriptor CdIgnore = new CommandDescriptor
+        {
             Name = "Ignore",
             Category = CommandCategory.Chat,
             IsConsoleSafe = true,
@@ -1273,35 +1374,47 @@ THE SOFTWARE.*/
             Handler = IgnoreHandler
         };
 
-        static void IgnoreHandler( Player player, Command cmd ) {
+        static void IgnoreHandler(Player player, Command cmd)
+        {
             string name = cmd.Next();
-            if( name != null ) {
-                if( cmd.HasNext ) {
-                    CdIgnore.PrintUsage( player );
+            if (name != null)
+            {
+                if (cmd.HasNext)
+                {
+                    CdIgnore.PrintUsage(player);
                     return;
                 }
-                PlayerInfo targetInfo = PlayerDB.FindPlayerInfoOrPrintMatches( player, name );
-                if( targetInfo == null ) return;
+                PlayerInfo targetInfo = PlayerDB.FindPlayerInfoOrPrintMatches(player, name);
+                if (targetInfo == null) return;
 
-                if( player.Ignore( targetInfo ) ) {
-                    player.MessageNow( "You are now ignoring {0}", targetInfo.ClassyName );
-                } else {
-                    player.MessageNow( "You are already ignoring {0}", targetInfo.ClassyName );
+                if (player.Ignore(targetInfo))
+                {
+                    player.MessageNow("You are now ignoring {0}", targetInfo.ClassyName);
+                }
+                else
+                {
+                    player.MessageNow("You are already ignoring {0}", targetInfo.ClassyName);
                 }
 
-            } else {
+            }
+            else
+            {
                 PlayerInfo[] ignoreList = player.IgnoreList;
-                if( ignoreList.Length > 0 ) {
-                    player.MessageNow( "Ignored players: {0}", ignoreList.JoinToClassyString() );
-                } else {
-                    player.MessageNow( "You are not currently ignoring anyone." );
+                if (ignoreList.Length > 0)
+                {
+                    player.MessageNow("Ignored players: {0}", ignoreList.JoinToClassyString());
+                }
+                else
+                {
+                    player.MessageNow("You are not currently ignoring anyone.");
                 }
                 return;
             }
         }
 
 
-        static readonly CommandDescriptor CdUnignore = new CommandDescriptor {
+        static readonly CommandDescriptor CdUnignore = new CommandDescriptor
+        {
             Name = "Unignore",
             Category = CommandCategory.Chat,
             IsConsoleSafe = true,
@@ -1310,27 +1423,38 @@ THE SOFTWARE.*/
             Handler = UnignoreHandler
         };
 
-        static void UnignoreHandler( Player player, Command cmd ) {
+        static void UnignoreHandler(Player player, Command cmd)
+        {
             string name = cmd.Next();
-            if( name != null ) {
-                if( cmd.HasNext ) {
-                    CdUnignore.PrintUsage( player );
+            if (name != null)
+            {
+                if (cmd.HasNext)
+                {
+                    CdUnignore.PrintUsage(player);
                     return;
                 }
-                PlayerInfo targetInfo = PlayerDB.FindPlayerInfoOrPrintMatches( player, name );
-                if( targetInfo == null ) return;
+                PlayerInfo targetInfo = PlayerDB.FindPlayerInfoOrPrintMatches(player, name);
+                if (targetInfo == null) return;
 
-                if( player.Unignore( targetInfo ) ) {
-                    player.MessageNow( "You are no longer ignoring {0}", targetInfo.ClassyName );
-                } else {
-                    player.MessageNow( "You are not currently ignoring {0}", targetInfo.ClassyName );
+                if (player.Unignore(targetInfo))
+                {
+                    player.MessageNow("You are no longer ignoring {0}", targetInfo.ClassyName);
                 }
-            } else {
+                else
+                {
+                    player.MessageNow("You are not currently ignoring {0}", targetInfo.ClassyName);
+                }
+            }
+            else
+            {
                 PlayerInfo[] ignoreList = player.IgnoreList;
-                if( ignoreList.Length > 0 ) {
-                    player.MessageNow( "Ignored players: {0}", ignoreList.JoinToClassyString() );
-                } else {
-                    player.MessageNow( "You are not currently ignoring anyone." );
+                if (ignoreList.Length > 0)
+                {
+                    player.MessageNow("Ignored players: {0}", ignoreList.JoinToClassyString());
+                }
+                else
+                {
+                    player.MessageNow("You are not currently ignoring anyone.");
                 }
                 return;
             }
@@ -1341,7 +1465,8 @@ THE SOFTWARE.*/
 
         #region Me
 
-        static readonly CommandDescriptor CdMe = new CommandDescriptor {
+        static readonly CommandDescriptor CdMe = new CommandDescriptor
+        {
             Name = "Me",
             Category = CommandCategory.Chat,
             Permissions = new[] { Permission.Chat },
@@ -1353,19 +1478,24 @@ THE SOFTWARE.*/
             Handler = MeHandler
         };
 
-        static void MeHandler( Player player, Command cmd ) {
-            if( player.Info.IsMuted ) {
+        static void MeHandler(Player player, Command cmd)
+        {
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
 
-            if( player.DetectChatSpam() ) return;
+            if (player.DetectChatSpam()) return;
 
             string msg = cmd.NextAll().Trim();
-            if( msg.Length > 0 ) {
-                Chat.SendMe( player, msg );
-            } else {
-                CdMe.PrintUsage( player );
+            if (msg.Length > 0)
+            {
+                Chat.SendMe(player, msg);
+            }
+            else
+            {
+                CdMe.PrintUsage(player);
             }
         }
 
@@ -1374,48 +1504,55 @@ THE SOFTWARE.*/
 
         #region Roll
 
-        static readonly CommandDescriptor CdRoll = new CommandDescriptor {
+        static readonly CommandDescriptor CdRoll = new CommandDescriptor
+        {
             Name = "Roll",
             Category = CommandCategory.Chat,
             Permissions = new[] { Permission.Chat },
             IsConsoleSafe = true,
             Help = "Gives random number between 1 and 100.\n" +
                    "&H/Roll MaxNumber\n" +
-                   "&S  Gives number between 1 and max.\n" +
+                   "&S Gives number between 1 and max.\n" +
                    "&H/Roll MinNumber MaxNumber\n" +
-                   "&S  Gives number between min and max.",
+                   "&S Gives number between min and max.",
             Handler = RollHandler
         };
 
-        static void RollHandler( Player player, Command cmd ) {
-            if( player.Info.IsMuted ) {
+        static void RollHandler(Player player, Command cmd)
+        {
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
 
-            if( player.DetectChatSpam() ) return;
+            if (player.DetectChatSpam()) return;
 
             Random rand = new Random();
             int n1;
             int min, max;
-            if( cmd.NextInt( out n1 ) ) {
+            if (cmd.NextInt(out n1))
+            {
                 int n2;
-                if( !cmd.NextInt( out n2 ) ) {
+                if (!cmd.NextInt(out n2))
+                {
                     n2 = 1;
                 }
-                min = Math.Min( n1, n2 );
-                max = Math.Max( n1, n2 );
-            } else {
+                min = Math.Min(n1, n2);
+                max = Math.Max(n1, n2);
+            }
+            else
+            {
                 min = 1;
                 max = 100;
             }
 
-            int num = rand.Next( min, max + 1 );
-            Server.Message( player,
+            int num = rand.Next(min, max + 1);
+            Server.Message(player,
                             "{0}{1} rolled {2} ({3}...{4})",
-                            player.ClassyName, Color.Silver, num, min, max );
-            player.Message( "{0}You rolled {1} ({2}...{3})",
-                            Color.Silver, num, min, max );
+                            player.ClassyName, Color.Silver, num, min, max);
+            player.Message("{0}You rolled {1} ({2}...{3})",
+                            Color.Silver, num, min, max);
         }
 
         #endregion
@@ -1423,7 +1560,8 @@ THE SOFTWARE.*/
 
         #region Deafen
 
-        static readonly CommandDescriptor CdDeafen = new CommandDescriptor {
+        static readonly CommandDescriptor CdDeafen = new CommandDescriptor
+        {
             Name = "Deafen",
             Aliases = new[] { "deaf" },
             Category = CommandCategory.Chat,
@@ -1432,21 +1570,27 @@ THE SOFTWARE.*/
             Handler = DeafenHandler
         };
 
-        static void DeafenHandler( Player player, Command cmd ) {
-            if( cmd.HasNext ) {
-                CdDeafen.PrintUsage( player );
+        static void DeafenHandler(Player player, Command cmd)
+        {
+            if (cmd.HasNext)
+            {
+                CdDeafen.PrintUsage(player);
                 return;
             }
-            if( !player.IsDeaf ) {
-                for( int i = 0; i < LinesToClear; i++ ) {
-                    player.MessageNow( "" );
+            if (!player.IsDeaf)
+            {
+                for (int i = 0; i < LinesToClear; i++)
+                {
+                    player.MessageNow("");
                 }
-                player.MessageNow( "Deafened mode: ON" );
-                player.MessageNow( "You will not see ANY messages until you type &H/Deafen&S again." );
+                player.MessageNow("Deafened mode: ON");
+                player.MessageNow("You will not see ANY messages until you type &H/Deafen&S again.");
                 player.IsDeaf = true;
-            } else {
+            }
+            else
+            {
                 player.IsDeaf = false;
-                player.MessageNow( "Deafened mode: OFF" );
+                player.MessageNow("Deafened mode: OFF");
             }
         }
 
@@ -1456,7 +1600,8 @@ THE SOFTWARE.*/
         #region Clear
 
         const int LinesToClear = 30;
-        static readonly CommandDescriptor CdClear = new CommandDescriptor {
+        static readonly CommandDescriptor CdClear = new CommandDescriptor
+        {
             Name = "Clear",
             UsableByFrozenPlayers = true,
             Category = CommandCategory.Chat,
@@ -1464,13 +1609,16 @@ THE SOFTWARE.*/
             Handler = ClearHandler
         };
 
-        static void ClearHandler( Player player, Command cmd ) {
-            if( cmd.HasNext ) {
-                CdClear.PrintUsage( player );
+        static void ClearHandler(Player player, Command cmd)
+        {
+            if (cmd.HasNext)
+            {
+                CdClear.PrintUsage(player);
                 return;
             }
-            for( int i = 0; i < LinesToClear; i++ ) {
-                player.Message( "" );
+            for (int i = 0; i < LinesToClear; i++)
+            {
+                player.Message("");
             }
         }
 
@@ -1479,7 +1627,8 @@ THE SOFTWARE.*/
 
         #region Timer
 
-        static readonly CommandDescriptor CdTimer = new CommandDescriptor {
+        static readonly CommandDescriptor CdTimer = new CommandDescriptor
+        {
             Name = "Timer",
             Permissions = new[] { Permission.Say },
             IsConsoleSafe = true,
@@ -1488,88 +1637,108 @@ THE SOFTWARE.*/
             Help = "&SStarts a timer with a given duration and message. " +
                    "As the timer counts down, announcements are shown globally. See also: &H/Help Timer Abort",
             HelpSections = new Dictionary<string, string> {
-                { "abort",  "&H/Timer Abort <TimerID>\n&S" +
+                { "abort", "&H/Timer Abort <TimerID>\n&S" +
                             "Aborts a timer with the given ID number. " +
                             "To see a list of timers and their IDs, type &H/Timer&S (without any parameters)." }
             },
             Handler = TimerHandler
         };
 
-        static void TimerHandler( Player player, Command cmd ) {
+        static void TimerHandler(Player player, Command cmd)
+        {
             string param = cmd.Next();
 
             // List timers
-            if( param == null ) {
-                ChatTimer[] list = ChatTimer.TimerList.OrderBy( timer => timer.TimeLeft ).ToArray();
-                if( list.Length == 0 ) {
-                    player.Message( "No timers running." );
-                } else {
-                    player.Message( "There are {0} timers running:", list.Length );
-                    foreach( ChatTimer timer in list ) {
-                        player.Message( "  #{0} \"{1}&S\" (started by {2}, {3} left)",
-                                        timer.Id, timer.Message, timer.StartedBy, timer.TimeLeft.ToMiniString() );
+            if (param == null)
+            {
+                ChatTimer[] list = ChatTimer.TimerList.OrderBy(timer => timer.TimeLeft).ToArray();
+                if (list.Length == 0)
+                {
+                    player.Message("No timers running.");
+                }
+                else
+                {
+                    player.Message("There are {0} timers running:", list.Length);
+                    foreach (ChatTimer timer in list)
+                    {
+                        player.Message(" #{0} \"{1}&S\" (started by {2}, {3} left)",
+                                        timer.Id, timer.Message, timer.StartedBy, timer.TimeLeft.ToMiniString());
                     }
                 }
                 return;
             }
 
             // Abort a timer
-            if( param.Equals( "abort", StringComparison.OrdinalIgnoreCase ) ) {
+            if (param.Equals("abort", StringComparison.OrdinalIgnoreCase))
+            {
                 int timerId;
-                if( cmd.NextInt( out timerId ) ) {
-                    ChatTimer timer = ChatTimer.FindTimerById( timerId );
-                    if( timer == null || !timer.IsRunning ) {
-                        player.Message( "Given timer (#{0}) does not exist.", timerId );
-                    } else {
-                        timer.Stop();
-                        string abortMsg = String.Format( "&Y(Timer) {0}&Y aborted a timer with {1} left: {2}",
-                                                         player.ClassyName, timer.TimeLeft.ToMiniString(), timer.Message );
-                        Chat.SendSay( player, abortMsg );
+                if (cmd.NextInt(out timerId))
+                {
+                    ChatTimer timer = ChatTimer.FindTimerById(timerId);
+                    if (timer == null || !timer.IsRunning)
+                    {
+                        player.Message("Given timer (#{0}) does not exist.", timerId);
                     }
-                } else {
-                    CdTimer.PrintUsage( player );
+                    else
+                    {
+                        timer.Stop();
+                        string abortMsg = String.Format("&Y(Timer) {0}&Y aborted a timer with {1} left: {2}",
+                                                         player.ClassyName, timer.TimeLeft.ToMiniString(), timer.Message);
+                        Chat.SendSay(player, abortMsg);
+                    }
+                }
+                else
+                {
+                    CdTimer.PrintUsage(player);
                 }
                 return;
             }
 
             // Start a timer
-            if( player.Info.IsMuted ) {
+            if (player.Info.IsMuted)
+            {
                 player.MessageMuted();
                 return;
             }
-            if( player.DetectChatSpam() ) return;
+            if (player.DetectChatSpam()) return;
             TimeSpan duration;
-            if( !param.TryParseMiniTimespan( out duration ) ) {
-                CdTimer.PrintUsage( player );
+            if (!param.TryParseMiniTimespan(out duration))
+            {
+                CdTimer.PrintUsage(player);
                 return;
             }
-            if( duration > DateTimeUtil.MaxTimeSpan ) {
+            if (duration > DateTimeUtil.MaxTimeSpan)
+            {
                 player.MessageMaxTimeSpan();
                 return;
             }
-            if( duration < ChatTimer.MinDuration ) {
-                player.Message( "Timer: Must be at least 1 second." );
+            if (duration < ChatTimer.MinDuration)
+            {
+                player.Message("Timer: Must be at least 1 second.");
                 return;
             }
 
             string sayMessage;
             string message = cmd.NextAll();
-            if( String.IsNullOrEmpty( message ) ) {
-                sayMessage = String.Format( "&Y(Timer) {0}&Y started a {1} timer",
+            if (String.IsNullOrEmpty(message))
+            {
+                sayMessage = String.Format("&Y(Timer) {0}&Y started a {1} timer",
                                             player.ClassyName,
-                                            duration.ToMiniString() );
-            } else {
-                sayMessage = String.Format( "&Y(Timer) {0}&Y started a {1} timer: {2}",
+                                            duration.ToMiniString());
+            }
+            else
+            {
+                sayMessage = String.Format("&Y(Timer) {0}&Y started a {1} timer: {2}",
                                             player.ClassyName,
                                             duration.ToMiniString(),
-                                            message );
+                                            message);
             }
-            Chat.SendSay( player, sayMessage );
-            ChatTimer.Start( duration, message, player.Name );
+            Chat.SendSay(player, sayMessage);
+            ChatTimer.Start(duration, message, player.Name);
         }
 
         #endregion
 
-        } 
-    
     }
+
+}
