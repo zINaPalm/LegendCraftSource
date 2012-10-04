@@ -404,7 +404,6 @@ THE SOFTWARE.*/
             {
                 string param = cmd.Next();
                 Player[] players;
-                string worldName = null;
                 string qualifier;
                 int offset = 0;
                 players = Server.Players;
@@ -415,7 +414,7 @@ THE SOFTWARE.*/
                     
                     if (cmd.HasNext)
                     {
-                        player.Message("/LeBot players");
+                        player.Message("/LeBot players [number]");
                         return;
                     }
                 }
