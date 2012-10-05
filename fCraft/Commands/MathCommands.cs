@@ -302,23 +302,23 @@ namespace fCraft
                 {
                     StartParametrizedDraw(player, new Command("/spd uu"));
                 }
-                else if (item.ToLower() == "1")
+                else if (item == "1")
                 {
                     PrepareParametrizedManifold.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
                 }
-                else if (item.ToLower() == "2")
+                else if (item == "2")
                 {
                     PrepareParametrizedManifold.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
                 }
-                else if (item.ToLower() == "3")
+                else if (item == "3")
                 {
                     PrepareParametrizedManifold.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
                 }
-                else if (item.ToLower() == "4")
+                else if (item == "4")
                 {
                     PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi u 0 1 0.01"));
                 }
-                else if (item.ToLower() == "5")
+                else if (item == "5")
                 {
                     PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi v 0 1 0.01"));
                 }
