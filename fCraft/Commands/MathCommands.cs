@@ -1,4 +1,4 @@
-﻿//Copyright (C) <2012>  <Jon Baker, Glenn Mariën and Lao Tszy>
+//Copyright (C) <2012>  <Jon Baker, Glenn Mariën and Lao Tszy>
 
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ namespace fCraft
                 Permissions = new Permission[] { Permission.DrawAdvanced },
                 RepeatableSelection = true,
                 Help =
-                    "Draws a 3d function values grid, i.e. this variant doest care to fill gaps between too distinct values. " +
+                    "Draws a 3d function values grid, i.e. this variant doesn't care to fill gaps between too distinct values. " +
                     commonFuncHelp + commonHelp + commonScalingHelp + copyright,
                 Usage = "/fu z=<f(x, y) expression> [scaling]",
                 Handler = FuncHandler,
@@ -184,6 +184,21 @@ namespace fCraft
                 Handler = PrepareParametrizedManifold.ClearParametrization,
             };
 
+        static readonly CommandDescriptor CdSpring = new CommandDescriptor
+        {
+            Name = "Spring",
+            Aliases = new[] { "Helix" },
+            Category = CommandCategory.Chat | CommandCategory.Fun,
+            Permissions = new Permission[] { Permission.DrawAdvanced },
+            IsConsoleSafe = true,
+            Usage = "/Spring Item",
+            Help = "Draws one revolution of a spring in the given area.\n" +
+            "Use items in order to complete the command (necessary).\n" +
+            "Order: 1, 2, 3, 4, 5, (leave blank for actual draw cmd)",
+            NotRepeatable = true,
+            Handler = SpringHandler,
+        };
+
 
         //Those handler functions would be a template function when this <censored> c# could 
         //accept constructors with params for the template param types.
@@ -276,6 +291,45 @@ namespace fCraft
                     operation.Begin();
                 }
             }
+        }
+        private static void SpringHandler(Player player, Command cmd)
+        {
+            string item = cmd.Next();
+
+            if (player.Can(Permission.DrawAdvanced))
+            {
+                if (string.IsNullOrEmpty(item))
+                {
+                    StartParametrizedDraw(player, new Command("/spd uu"));
+                }
+                else if (item.ToLower() == "1")
+                {
+                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
+                }
+                else if (item.ToLower() == "2")
+                {
+                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
+                }
+                else if (item.ToLower() == "3")
+                {
+                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
+                }
+                else if (item.ToLower() == "4")
+                {
+                    PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi u 0 1 0.01"));
+                }
+                else if (item.ToLower() == "5")
+                {
+                    PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi v 0 1 0.01"));
+                }
+                else
+                {
+                    player.Message("/Spring item. Items are 1, 2, 3, 4, 5. Do each command seperately in order.\n" +
+                        "Then do /spring to start the draw.");
+                }
+            }
+            else
+                player.Message("Your rank cannot use this command.");
         }
     }
 }
