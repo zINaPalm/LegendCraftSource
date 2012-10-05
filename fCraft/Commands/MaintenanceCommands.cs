@@ -140,7 +140,7 @@ namespace fCraft {
                 CdNick.PrintUsage(player);
                 return;
             }
-
+            Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
             PlayerInfo info = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
             if (info == null) return;
             string oldDisplayedName = info.DisplayedName;
@@ -173,6 +173,8 @@ namespace fCraft {
                 player.Message("Nick: DisplayedName for {0} was reset (was \"{1}&S\")",
                                 info.Name,
                                 oldDisplayedName);
+                target.Info.isMad = false;
+                target.Info.isJelly = false;
             }
             else
             {
@@ -963,6 +965,7 @@ namespace fCraft {
                     }
 
                 case "displayedname":
+                    Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
                     string oldDisplayedName = info.DisplayedName;
                     if( valName.Length == 0 ) valName = null;
                     if( valName == info.DisplayedName ) {
@@ -986,6 +989,8 @@ namespace fCraft {
                         player.Message( "SetInfo: DisplayedName for {0} was reset (was \"{1}&S\")",
                                         info.Name,
                                         oldDisplayedName );
+                        target.Info.isMad = false;
+                        target.Info.isJelly = false;
                     } else {
                         player.Message( "SetInfo: DisplayedName for {0} changed from \"{1}&S\" to \"{2}&S\"",
                                         info.Name,

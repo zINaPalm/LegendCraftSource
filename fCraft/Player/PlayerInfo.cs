@@ -233,6 +233,12 @@ namespace fCraft {
 
         #region Stats
 
+        ///<summary>In the state of 'jelly'.</summary>
+        public bool isJelly;
+
+        ///<summary>In the state of 'MADNESS'.</summary>
+        public bool isMad;
+
         /// <summary> Total amount of time the player spent on this server. </summary>
         public TimeSpan TotalTime;
 

@@ -11,3 +11,13 @@ C:\Users\Jonah\Desktop\Legend Craft\Legend Craft Source\ServerGUI\obj\Release\Se
 C:\Users\Jonah\LegendCraftSource\bin\Release\ServerGUI.exe.config
 C:\Users\Jonah\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.exe
 C:\Users\Jonah\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.pdb
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\bin\Release\ServerGUI.exe.config
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.exe
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\ServerGUI.pdb
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\bin\Release\ServerGUI.exe
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\bin\Release\ServerGUI.pdb
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\fCraft.ServerGUI.MainForm.resources
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\fCraft.ServerGUI.UpdateWindow.resources
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Jonah\Desktop\LegendCraft\LegendCraftSource\ServerGUI\obj\Release\GenerateResource.write.1.tlog

@@ -35,6 +35,7 @@ namespace fCraft {
             CommandManager.RegisterCommand(CdModerate);
             
             CommandManager.RegisterCommand(CdBroFist);
+            CommandManager.RegisterCommand(CdGive);
             CommandManager.RegisterCommand(CdJelly);
             CommandManager.RegisterCommand(CdMad);
             CommandManager.RegisterCommand(CdBanHammer);
@@ -202,7 +203,7 @@ THE SOFTWARE.*/
                             if (op == "/")
                             {
 
-                                long div = no1 * no2;
+                                long div = no1 / no2;
                                 if (div < 0 | no1 < 0 | no2 < 0)
                                 {
                                     player.Message("Negative Number Detected, please choose froma  whole number.");
@@ -347,25 +348,25 @@ THE SOFTWARE.*/
             {
                 Server.Message("{0}&f: LeBot, Time", player.ClassyName);
                 TimeSpan time = TimeSpan.FromHours(player.Info.TotalTime.TotalHours);
-                Server.Message("&0LeBot&f: {0} has spent a total of " + time.ToMiniString() + " on {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
+                Server.Message("&0LeBot&f: {0}&f has spent a total of " + time.ToMiniString() + " on {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "promos")
             {
                 Server.Message("{0}&f: LeBot, Promos", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0}&f has promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "bans")
             {
                 Server.Message("{0}&f: LeBot, Bans", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0}&f has banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "kicks")
             {
                 Server.Message("{0}&f: LeBot, Kicks", player.ClassyName);
-                Server.Message("&0LeBot&f: {0} has kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
+                Server.Message("&0LeBot&f: {0}&f has kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "blocks")
@@ -610,7 +611,7 @@ THE SOFTWARE.*/
             IsConsoleSafe = false,
             Permissions = new[] { Permission.EditPlayerDB },
             Usage = "/mad PlayerName",
-            Help = "&SHe mad",
+            Help = "&SHe mad. (Protip: Use /mad playername again to make the player not mad anymore)>",
             Handler = MadHandler
         };
 
@@ -619,41 +620,58 @@ THE SOFTWARE.*/
             string targetName = cmd.Next();
             string mad = "mad";
 
-
-            Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
-            if (target == player)
+            try
             {
-                player.Message("You can't make yourself mad!");
-                return;
-            }
-            if (target == null)
-            {
-                player.Message("No player found matching {0}!", target.ClassyName);
-                return;
-            }
-            if (player.Can(Permission.EditPlayerDB, target.Info.Rank))
-            {
-                PlayerInfo info = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
-                if (info == null) return;
-                string oldDisplayedName = info.DisplayedName;
-                info.DisplayedName = mad;
-
-                if (oldDisplayedName == null)
+                Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
+                if (target == player)
                 {
-                    Server.Message("&W{0} = mad", info.Name);
-
+                    player.Message("You can't make yourself mad!");
+                    return;
                 }
+                if (target == null)
+                {
+                    player.Message("No player found matching {0}!", target.ClassyName);
+                    return;
+                }
+                if (player.Can(Permission.EditPlayerDB, target.Info.Rank))
+                {
+                    PlayerInfo info = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
+                    if (target.Info.isMad == false | target.Info.isJelly == false)
+                    {
+                        if (info == null) return;
+                        string oldDisplayedName = target.Info.DisplayedName;
+                        target.Info.DisplayedName = mad;
 
+                        if (oldDisplayedName == null)
+                        {
+                            Server.Message("&W{0} = mad", info.Name);
+                            target.Info.isMad = true;
+                        }
+
+                        else
+                        {
+                            Server.Message("&W{0] = mad",
+                                            info.Name);
+
+                        }
+                    }
+                    else
+                    {
+                        player.Message("Target's name was reset!");
+                        target.Info.isMad = false;
+                        target.Info.isJelly = false;
+                        target.Info.DisplayedName = target.Info.Name;
+                    }
+                }
                 else
                 {
-                    Server.Message("&W{0] = mad",
-                                    info.Name);
-
+                    player.Message("&W You can only make players mad ranked {0}&W and below", player.Info.Rank.GetLimit(Permission.EditPlayerDB).ClassyName);
                 }
             }
-            else
+            
+            catch (ArgumentNullException)
             {
-                player.Message("&W You can only make players mad ranked {0}&W and below", player.Info.Rank.GetLimit(Permission.EditPlayerDB).ClassyName);
+                player.Message("Expected format: /mad playername.");
             }
         }
         static readonly CommandDescriptor CdGive = new CommandDescriptor
@@ -721,42 +739,59 @@ THE SOFTWARE.*/
             string targetName = cmd.Next();
             string jelly = "jelly";
 
-
-            Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
-            if (target == player)
+            try
             {
-                player.Message("You can't make yourself jealous!");
-                return;
-            }
-            if (target == null)
-            {
-                player.Message("No players found matching {0}", target.ClassyName);
-                return;
-            }
-            if (player.Can(Permission.EditPlayerDB, target.Info.Rank))
-            {
-                PlayerInfo info = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
-                if (info == null) return;
-                string oldDisplayedName = info.DisplayedName;
-                info.DisplayedName = jelly;
-
-                if (oldDisplayedName == null)
+                Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
+                if (target == player)
                 {
-                    Server.Message("&W{0} = Jelly", info.Name);
-
+                    player.Message("You can't make yourself jealous!");
+                    return;
                 }
+                if (target == null)
+                {
+                    player.Message("No players found matching {0}", target.ClassyName);
+                    return;
+                }
+                if (player.Can(Permission.EditPlayerDB, target.Info.Rank))
+                {
+                    PlayerInfo info = PlayerDB.FindPlayerInfoOrPrintMatches(player, targetName);
+                    if (info == null) return;
+                    string oldDisplayedName = info.DisplayedName;
+                    info.DisplayedName = jelly;
 
+                    if (target.Info.isMad == false | target.Info.isJelly == false)
+                    {
+
+                        if (oldDisplayedName == null)
+                        {
+                            Server.Message("&W{0} = Jelly", info.Name);
+
+                        }
+
+                        else
+                        {
+                            Server.Message("&W{0] = Jelly",
+                                        info.Name);
+
+                        }
+                    }
+                    else
+                    {
+                        player.Message("Target's name was reset!");
+                        target.Info.isJelly = false;
+                        target.Info.isMad = false;
+                        target.Info.DisplayedName = target.Info.Name;
+                    }
+                }
                 else
                 {
-                    Server.Message("&W{0] = Jelly",
-                                info.Name);
-
+                    player.Message("&W You can only make players jelly ranked {0}&W and below", player.Info.Rank.GetLimit(Permission.EditPlayerDB).ClassyName);
                 }
             }
-            else
+            catch (ArgumentNullException)
             {
-                player.Message("&W You can only make players jelly ranked {0}&W and below", player.Info.Rank.GetLimit(Permission.EditPlayerDB).ClassyName);
-            }
+                player.Message("Expected format: /mad playername.");
+            } 
         }
 
         #endregion

@@ -136,7 +136,6 @@ THE SOFTWARE.*/
                     }
                     if (target == null)
                     {
-                        player.Message("&ePlease type in a player's name to give bits towards.");
                         return;
                     }
                     else
@@ -145,23 +144,19 @@ THE SOFTWARE.*/
                         {
                             player.Message("&eThe amount must be a number!");
                             return;
+                        }                      
+                        if (cmd.IsConfirmed)
+                        {
+                            //actually give the player the money
+                            int tNewMoney = target.Info.Money + amountnum;
+                            player.Message("&eYou have given {0} &C{1} &ebit(s).", target.ClassyName, amountnum);
+                            target.Info.Money = tNewMoney;
+                            return;
                         }
                         else
                         {
-                            player.Message("&eAre you sure you want to give {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
-                            if (cmd.IsConfirmed)
-                            {
-                                //actually give the player the money
-                                int tNewMoney = target.Info.Money + amountnum;
-                                player.Message("&eYou have given {0} &C{1} &ebit(s).", target.ClassyName, amountnum);
-                                target.Info.Money = tNewMoney;
-                            }
-                            else
-                            {
-                                //abort code
-                                player.Message("&eMoney transaction was aborted.");
-                                return;
-                            }
+                            player.Confirm(cmd, "&eAre you sure you want to give {0} &C{1} &ebits?", target.ClassyName, amountnum);
+                            return;
                         }
 
                     }
@@ -181,7 +176,6 @@ THE SOFTWARE.*/
                     }
                     if (target == null)
                     {
-                        player.Message("&ePlease type in a player's name to take bits away from.");
                         return;
                     }
                     else
@@ -191,25 +185,25 @@ THE SOFTWARE.*/
                             player.Message("&eThe amount must be a number!");
                             return;
                         }
+
+                        if (cmd.IsConfirmed)
+                        {
+
+                            //actually give the player the money
+                            int tNewMoney = target.Info.Money - amountnum;
+                            player.Message("&eYou have taken &c{1}&e from {0}.", target.ClassyName, amountnum);
+                            target.Info.Money = tNewMoney;
+                            return;
+                        }
                         else
                         {
-                            player.Message("&eAre you sure you want to take &c{1} &ebits from {0}? Type /ok to continue.", target.ClassyName, amountnum);
-                            if (cmd.IsConfirmed)
-                            {
-                                //actually give the player the money
-                                int tNewMoney = target.Info.Money - amountnum;
-                                player.Message("&eYou have takes &c{1}&e from {0}.", target.ClassyName, amountnum);
-                                target.Info.Money = tNewMoney;
-                            }
-                            else
-                            {
-                                //abort code
-                                player.Message("&eMoney transaction was aborted.");
-                                return;
-                            }
+                            player.Confirm(cmd, "&eAre you sure you want to take &c{1} &ebits from {0}?", target.ClassyName, amountnum);
+                            return;
                         }
 
                     }
+
+                    
                 }
                 if (option == "pay")
                 {
@@ -223,7 +217,6 @@ THE SOFTWARE.*/
 
                     if (target == null)
                     {
-                        player.Message("&ePlease type in a player's name to pay bits towards.");
                         return;
                     }
                     else
@@ -233,25 +226,24 @@ THE SOFTWARE.*/
                             player.Message("&eThe amount must be a number!");
                             return;
                         }
+
+                        if (cmd.IsConfirmed)
+                        {
+                            //show him da monai
+                            int pNewMoney = player.Info.Money - amountnum;
+                            int tNewMoney = target.Info.Money + amountnum;
+                            player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
+                            player.Info.Money = pNewMoney;
+                            target.Info.Money = tNewMoney;
+                            return;
+                        }
                         else
                         {
-                            player.Message("&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
-                            if (cmd.IsConfirmed)
-                            {
-                                //show him da monai
-                                int pNewMoney = player.Info.Money - amountnum;
-                                int tNewMoney = target.Info.Money + amountnum;
-                                player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
-                                player.Info.Money = pNewMoney;
-                                target.Info.Money = tNewMoney;
-                            }
-                            else
-                            {
-                                //dun show him da monai
-                                player.Message("&eMoney transaction was aborted.");
-                                return;
-                            }
+                            player.Confirm(cmd, "&eAre you sure you want to pay {0} &C{1} &ebits? Type /ok to continue.", target.ClassyName, amountnum);
+                            return;
                         }
+                        
+                        
                     }
                 }
 
@@ -267,7 +259,6 @@ THE SOFTWARE.*/
 
                     if (target == null)
                     {
-                        player.Message("&ePlease type in a player's name to see how many bits they have.");
                         return;
                     }
                     else
@@ -277,7 +268,7 @@ THE SOFTWARE.*/
                     }
 
                 }
-                else
+                else 
                 {
                     player.Message("&eValid choices are '/economy pay', '/economy take', '/economy give', and '/economy show.'");
                     return;
@@ -288,7 +279,7 @@ THE SOFTWARE.*/
                 CdEconomy.PrintUsage(player);
             }
         }
-        #endregion
+        #endregion 
 
         static readonly CommandDescriptor CdBanAll = new CommandDescriptor
         {

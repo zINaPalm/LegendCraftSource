@@ -128,7 +128,7 @@ THE SOFTWARE.*/
             Category = CommandCategory.Moderation,
             IsConsoleSafe = false,
             IsHidden = false,
-            Permissions = new[] { Permission.MessageBlock },
+            Permissions = new[] { Permission.Ban },
             Usage = "/MessageBlock Message",
             Help = "Creates a message that is sent to the player whenever the touch the messageblock.",
             Handler = MsgBlockHandler

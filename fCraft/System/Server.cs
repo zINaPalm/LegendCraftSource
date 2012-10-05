@@ -417,6 +417,7 @@ namespace fCraft {
 
             // garbage collection
             gcTask = Scheduler.NewTask( DoGC ).RunForever( GCInterval, TimeSpan.FromSeconds( 45 ) );
+            Heartbeat.Start();
 
 
 
