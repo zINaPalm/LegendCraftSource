@@ -75,7 +75,7 @@ namespace fCraft {
 
         }
         #region LegendCraft
-        /* Copyright (c) <2012> <LeChosenOne, DingusBingus>
+        /* Copyright (c) <2012> <LeChosenOne, DingusBungus>
    Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -280,7 +280,10 @@ THE SOFTWARE.*/
             }
         }
         #endregion 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
         static readonly CommandDescriptor CdBanAll = new CommandDescriptor
         {
             Name = "BanAll",
