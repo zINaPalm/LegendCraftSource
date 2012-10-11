@@ -462,7 +462,7 @@ namespace fCraft {
             if( fields[13].Length > 1 || !IPAddress.TryParse( fields[13], out info.LastFailedLoginIP ) ) { // LEGACY
                 info.LastFailedLoginIP = IPAddress.None;
             }
-            // if( fields[14].Length > 0 ) Int32.TryParse( fields[14], out info.Money);
+             if( fields[14].Length > 0 ) Int32.TryParse( fields[14], out info.Money);
 
             fields[15].ToDateTime( ref info.FirstLoginDate );
 
