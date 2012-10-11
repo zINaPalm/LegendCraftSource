@@ -207,7 +207,7 @@ THE SOFTWARE.*/
                         if (op == "/")
                         {
 
-<<<<<<< HEAD
+
                                 long div = no1 / no2;
                                 if (div < 0 | no1 < 0 | no2 < 0)
                                 {
@@ -215,7 +215,7 @@ THE SOFTWARE.*/
                                     return;
                                 }
                                 else
-=======
+
                             long div = no1 / no2;
                             if (div < 0 | no1 < 0 | no2 < 0)
                             {
@@ -225,7 +225,6 @@ THE SOFTWARE.*/
                             else
                             {
                                 if (no1 % 2 == 0 | no2 % 2 == 0)
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
                                 {
                                     if (no1 % no2 == 0)
                                     {
@@ -362,41 +361,37 @@ THE SOFTWARE.*/
             {
                 Server.Message("{0}&f: LeBot, Time", player.ClassyName);
                 TimeSpan time = TimeSpan.FromHours(player.Info.TotalTime.TotalHours);
-<<<<<<< HEAD
-                Server.Message("&0LeBot&f: {0}&f has spent a total of " + time.ToMiniString() + " on {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
-=======
-                Server.Message("&0LeBot&f: {0} &fhas spent a total of " + time.ToMiniString() + " &fon {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
+
+              
+               Server.Message("&0LeBot&f: {0} &fhas spent a total of " + time.ToMiniString() + " &fon {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
+
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "promos")
             {
                 Server.Message("{0}&f: LeBot, Promos", player.ClassyName);
-<<<<<<< HEAD
-                Server.Message("&0LeBot&f: {0}&f has promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
-=======
+
                 Server.Message("&0LeBot&f: {0} &fhas promoted " + player.Info.PromoCount.ToString() + " players.", player.ClassyName);
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
+
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "bans")
             {
                 Server.Message("{0}&f: LeBot, Bans", player.ClassyName);
-<<<<<<< HEAD
+
                 Server.Message("&0LeBot&f: {0}&f has banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
-=======
-                Server.Message("&0LeBot&f: {0} &fhas banned " + player.Info.TimesBannedOthers.ToString() + " players.", player.ClassyName);
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
+
+
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "kicks")
             {
                 Server.Message("{0}&f: LeBot, Kicks", player.ClassyName);
-<<<<<<< HEAD
+
                 Server.Message("&0LeBot&f: {0}&f has kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
-=======
+
                 Server.Message("&0LeBot&f: {0} &fhas kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
+
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
             else if (option == "blocks")
