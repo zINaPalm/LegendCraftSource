@@ -208,14 +208,6 @@ THE SOFTWARE.*/
                         {
 
 
-                                long div = no1 / no2;
-                                if (div < 0 | no1 < 0 | no2 < 0)
-                                {
-                                    player.Message("Negative Number Detected, please choose froma  whole number.");
-                                    return;
-                                }
-                                else
-
                             long div = no1 / no2;
                             if (div < 0 | no1 < 0 | no2 < 0)
                             {
