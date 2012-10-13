@@ -24,7 +24,7 @@ namespace fCraft
         public static readonly bool[] ConsoleOptions;
         public static readonly bool[] LogFileOptions;
 
-        const string DefaultLogFileName = "800Craft.log",
+        const string DefaultLogFileName = "LegendCraft.log",
                      LongDateFormat = "yyyy'-'MM'-'dd'_'HH'-'mm'-'ss",
                      ShortDateFormat = "yyyy'-'MM'-'dd";
         static readonly Uri CrashReportUri = new Uri("http://au70.net/crashreport.php");
