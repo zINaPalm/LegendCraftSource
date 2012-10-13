@@ -38,6 +38,7 @@ namespace fCraft
             CommandManager.RegisterCommand(CdSetParam);
             CommandManager.RegisterCommand(CdStartParam);
             CommandManager.RegisterCommand(CdClearParam);
+            CommandManager.RegisterCommand(CdSpring);
         }
         const string commonFuncHelp = "Can also be x=f(y, z) or y=f(x, z). ";
 
@@ -188,13 +189,11 @@ namespace fCraft
         {
             Name = "Spring",
             Aliases = new[] { "Helix" },
-            Category = CommandCategory.Chat | CommandCategory.Fun,
+            Category = CommandCategory.Chat | CommandCategory.Building,
             Permissions = new Permission[] { Permission.DrawAdvanced },
-            IsConsoleSafe = true,
+            IsConsoleSafe = false,
             Usage = "/Spring Item",
-            Help = "Draws one revolution of a spring in the given area.\n" +
-            "Use items in order to complete the command (necessary).\n" +
-            "Order: 1, 2, 3, 4, 5, (leave blank for actual draw cmd)",
+            Help = "Draws one revolution of a spring in the given area.\n", 
             NotRepeatable = true,
             Handler = SpringHandler,
         };
@@ -292,45 +291,24 @@ namespace fCraft
                 }
             }
         }
-        private static void SpringHandler(Player player, Command cmd)
+          private static void SpringHandler(Player player, Command cmd)
         {
             string item = cmd.Next();
 
             if (player.Can(Permission.DrawAdvanced))
             {
-                if (string.IsNullOrEmpty(item))
-                {
+                    PrepareSpring.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 1 0.01"));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 1 0.01"));
                     StartParametrizedDraw(player, new Command("/spd uu"));
-                }
-                else if (item == "1")
-                {
-                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
-                }
-                else if (item == "2")
-                {
-                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
-                }
-                else if (item == "3")
-                {
-                    PrepareParametrizedManifold.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
-                }
-                else if (item == "4")
-                {
-                    PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi u 0 1 0.01"));
-                }
-                else if (item == "5")
-                {
-                    PrepareParametrizedManifold.SetParamIteration(player, new Command("/spi v 0 1 0.01"));
-                }
-                else
-                {
-                    player.Message("/Spring item. Items are 1, 2, 3, 4, 5. Do each command seperately in order.\n" +
-                        "Then do /spring to start the draw.");
-                }
             }
             else
                 player.Message("Your rank cannot use this command.");
         }
     }
 }
+
+
 
