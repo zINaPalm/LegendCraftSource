@@ -38,6 +38,8 @@ namespace fCraft {
             rawMessage = rawMessage.Replace("$money", player.Info.Money.ToString());
             rawMessage = rawMessage.Replace("$ass", "You, my good sir, are an &cAss&f");
             rawMessage = rawMessage.Replace("$mad", "You mad, bro?");
+            rawMessage = rawMessage.Replace("$welcome", "Welcome to " +ConfigKey.ServerName.GetString());
+            rawMessage = rawMessage.Replace("$clap", "A round of applause might be appropriate, *claps*");
             if (!player.Can(Permission.ChatWithCaps))
             {
                 int caps = 0;
