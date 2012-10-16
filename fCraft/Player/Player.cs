@@ -141,11 +141,11 @@ namespace fCraft {
                 string displayedName = Name;
                 if (ConfigKey.RankPrefixesInList.Enabled())
                 {
-                    titleName = Info.Rank.Prefix + "[" + titleName + "]" + displayedName;
+                    titleName = Info.Rank.Prefix + "[" + titleName + "] " + displayedName;
                 }
                 if (ConfigKey.RankColorsInChat.Enabled() && Info.Rank.Color != Color.White && iName == null)
                 {
-                    displayedName = Info.Rank.Color + "[" + titleName + "]" + displayedName;
+                    displayedName = Info.Rank.Color + "[" + titleName + "] " + displayedName;
                 }
                 return titleName;
             }
@@ -1636,7 +1636,7 @@ namespace fCraft {
 
         #region Static Utilities
 
-        static readonly Uri PaidCheckUri = new Uri( "http://minecraft.net/haspaid.jsp?user=" );
+        static readonly Uri PaidCheckUri = new Uri( "https://minecraft.net/haspaid.jsp?user=" );
         const int PaidCheckTimeout = 5000;
 
 
