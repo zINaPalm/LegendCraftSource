@@ -1,4 +1,4 @@
-﻿// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
+// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -188,12 +188,19 @@ THE SOFTWARE.*/
 
                         if (cmd.IsConfirmed)
                         {
-
-                            //actually give the player the money
-                            int tNewMoney = target.Info.Money - amountnum;
-                            player.Message("&eYou have taken &c{1}&e from {0}.", target.ClassyName, amountnum);
-                            target.Info.Money = tNewMoney;
-                            return;
+                            if (amountnum > target.Info.Money)
+                            {
+                                player.Message("{0}&e doesn't have that many bits!");
+                                return;
+                            }
+                            else
+                            {
+                                //actually give the player the money
+                                int tNewMoney = target.Info.Money - amountnum;
+                                player.Message("&eYou have taken &c{1}&e from {0}.", target.ClassyName, amountnum);
+                                target.Info.Money = tNewMoney;
+                                return;
+                            }
                         }
                         else
                         {
@@ -229,13 +236,21 @@ THE SOFTWARE.*/
 
                         if (cmd.IsConfirmed)
                         {
-                            //show him da monai
-                            int pNewMoney = player.Info.Money - amountnum;
-                            int tNewMoney = target.Info.Money + amountnum;
-                            player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
-                            player.Info.Money = pNewMoney;
-                            target.Info.Money = tNewMoney;
-                            return;
+                            if (amountnum > player.Info.Money)
+                            {
+                                player.Message("&eYou don't have that many bits!");
+                                return;
+                            }
+                            else
+                            {
+                                //show him da monai
+                                int pNewMoney = player.Info.Money - amountnum;
+                                int tNewMoney = target.Info.Money + amountnum;
+                                player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
+                                player.Info.Money = pNewMoney;
+                                target.Info.Money = tNewMoney;
+                                return;
+                            }
                         }
                         else
                         {
@@ -280,10 +295,7 @@ THE SOFTWARE.*/
             }
         }
         #endregion 
-<<<<<<< HEAD
 
-=======
->>>>>>> e64899f2e75dffcf0d5adc9b0585daedf75b41a3
         static readonly CommandDescriptor CdBanAll = new CommandDescriptor
         {
             Name = "BanAll",
