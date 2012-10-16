@@ -590,7 +590,7 @@ THE SOFTWARE.*/
             if (target == null) return;
 
             if (player.Can(Permission.Slap, target.Info.Rank))
-            { //Broadcasts a server meesage saying the player is muted, even thought they are not.
+            { //Broadcasts a server message saying the player is muted, even thought they are not.
                 Server.Players.CanSee(target).Except(target).Message("&sPlayer {0}&6*&s was muted by {1}&s for 999m.", target.ClassyName, player.ClassyName);
                 IRC.PlayerSomethingMessage(player, "muted", target, null);
                 target.Message("&sYou were muted by {0}&s for 999m.", player.ClassyName);
@@ -620,7 +620,7 @@ THE SOFTWARE.*/
 
         static void CreditsHandler(Player player, Command cmd)
         {
-            player.Message(" LegendCraft was developed by LeChosenOne and Dingus. LegendCraft was based off of 800Craft developed by Jonty800, GlennMR, and Lao Tszy. 800Craft was based off of fCraft developed by fragmer. Thanks to everyone who contributed to these softwares. And thank you for using LegendCraft!");
+            player.Message(" LegendCraft was developed by LeChosenOne and DingusBungus. LegendCraft was based off of 800Craft developed by Jonty800, GlennMR, and Lao Tszy. 800Craft was based off of fCraft developed by fragmer. Thanks to everyone who contributed to these softwares. And thank you for using LegendCraft!");
         }
         static readonly CommandDescriptor CdBanHammer = new CommandDescriptor
         {
