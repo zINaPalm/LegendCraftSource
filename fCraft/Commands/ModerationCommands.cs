@@ -125,7 +125,7 @@ THE SOFTWARE.*/
                 {
                     if (!player.Can(Permission.ManageEconomy))
                     {
-                        player.Message("You do not have the required permmisions to use that command!");
+                        player.Message("You do not have the required permisions to use that command!");
                         return;
                     }
                     Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
@@ -165,7 +165,7 @@ THE SOFTWARE.*/
                 {
                     if (!player.Can(Permission.ManageEconomy))
                     {
-                        player.Message("You do not have the required permmisions to use that command!");
+                        player.Message("You do not have the required permisions to use that command!");
                         return;
                     }
                     Player target = Server.FindPlayerOrPrintMatches(player, targetName, false, true);
