@@ -1,3 +1,12 @@
+LegendCraft Changelog v1.8.0
+Add: /Economy
+Add: /Spring
+Add: Player.Info.Money
+Add: Economy PlayerDB
+Add: $Welcome and $Clap
+Add: Lebot Final Touches
+Change: Various typo fixes
+
 LegendCraft Changelog v1.7.0
 Add: /fortunecookie
 Add: /LeBot
@@ -6,7 +15,6 @@ Add: /UndoAll
 Add: Several Command Aliases
 Add: /GPS
 Add: $ass and $money, other $commands fixed
-Add: Economy System
 Add: MIT Liscence added to software and README
 Change: /fortuncookie given more options 
 Change: ServerGUI now has no 800craft text
