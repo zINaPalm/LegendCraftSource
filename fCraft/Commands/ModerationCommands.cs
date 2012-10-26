@@ -642,7 +642,7 @@ THE SOFTWARE.*/
                 string StripT = Color.StripColors(titleName);
                 if (!StripT.StartsWith("[") && !StripT.EndsWith("]"))
                 {
-                    titleName = info.Rank.Color + "[" + titleName + info.Rank.Color + "] " + " ";
+                    titleName = info.Rank.Color + "[" + titleName + info.Rank.Color + "] ";
                 }
             }
             info.TitleName = titleName;
