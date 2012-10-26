@@ -94,7 +94,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
 
-       #region Economy
+        #region Economy
         static readonly CommandDescriptor CdEconomy = new CommandDescriptor
         {
             Name = "Economy",
@@ -190,14 +190,21 @@ THE SOFTWARE.*/
 
                         if (cmd.IsConfirmed)
                         {
-
-                            //actually give the player the money
-                            int tNewMoney = target.Info.Money - amountnum;
-                            player.Message("&eYou have taken &c{1}&e from {0}.", target.ClassyName, amountnum);
-                            target.Message("&e{0} &ehas taken {1} &ebit(s) from you.", player.ClassyName, amountnum);
-                            Server.Players.Except(target).Except(player).Message("&e{0} &etook {1} &ebit(s) from {2}&e.", player.ClassyName, amountnum, target.ClassyName);
-                            target.Info.Money = tNewMoney;
-                            return;
+                            if (amountnum > target.Info.Money)
+                            {
+                                player.Message("{0}&e doesn't have that many bits!", target.ClassyName);
+                                return;
+                            }
+                            else
+                            {
+                                //actually give the player the money
+                                int tNewMoney = target.Info.Money - amountnum;
+                                player.Message("&eYou have taken &c{1}&e from {0}.", target.ClassyName, amountnum);
+                                target.Message("&e{0} &ehas taken {1} &ebit(s) from you.", player.ClassyName, amountnum);
+                                Server.Players.Except(target).Except(player).Message("&e{0} &etook {1} &ebit(s) from {2}&e.", player.ClassyName, amountnum, target.ClassyName);
+                                target.Info.Money = tNewMoney;
+                                return;
+                            }
                         }
                         else
                         {
@@ -233,15 +240,23 @@ THE SOFTWARE.*/
 
                         if (cmd.IsConfirmed)
                         {
-                            //show him da monai
-                            int pNewMoney = player.Info.Money - amountnum;
-                            int tNewMoney = target.Info.Money + amountnum;
-                            player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
-                            target.Message("&e{0} &ehas paid you {1} &ebit(s).", player.ClassyName, amountnum);
-                            Server.Players.Except(target).Except(player).Message("&e{0} &ewas paid {1} &ebit(s) from {2}&e.", target.ClassyName, amountnum, player.ClassyName);
-                            player.Info.Money = pNewMoney;
-                            target.Info.Money = tNewMoney;
-                            return;
+                            if (amountnum > player.Info.Money)
+                            {
+                                player.Message("You don't have that many bits!");
+                                return;
+                            }
+                            else
+                            {
+                                //show him da monai
+                                int pNewMoney = player.Info.Money - amountnum;
+                                int tNewMoney = target.Info.Money + amountnum;
+                                player.Message("&eYou have paid &C{1}&e to {0}.", target.ClassyName, amountnum);
+                                target.Message("&e{0} &ehas paid you {1} &ebit(s).", player.ClassyName, amountnum);
+                                Server.Players.Except(target).Except(player).Message("&e{0} &ewas paid {1} &ebit(s) from {2}&e.", target.ClassyName, amountnum, player.ClassyName);
+                                player.Info.Money = pNewMoney;
+                                target.Info.Money = tNewMoney;
+                                return;
+                            }
                         }
                         else
                         {
