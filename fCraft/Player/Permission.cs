@@ -1,4 +1,4 @@
-﻿// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
+// Copyright 2009-2012 Matvei Stefarov <me@matvei.org>
 
 namespace fCraft {
 
@@ -172,10 +172,7 @@ namespace fCraft {
         ChatWithCaps,
 
         /// <summary> Ability to swear. </summary>
-        Swear,
-
-        /// <summary> Ability to Make votes in /vote </summary>
-        MakeVotes,
+        Swear,       
 
         /// <summary> Ability to start VoteKicks in /vote kick</summary>
         MakeVoteKicks,
@@ -262,6 +259,12 @@ namespace fCraft {
         Economy,
 
         ///<summary>Permission to manage the economy. (Use /give and /take)</summary>
-        ManageEconomy
+        ManageEconomy,
+
+         /// <summary> Ability to Make votes in /vote </summary>
+        MakeVotes,
+
+        ///<summary> Permission to toggle WorldChat.</summary>
+        ManageWorldChat
     }
 }
