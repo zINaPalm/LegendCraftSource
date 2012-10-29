@@ -5,6 +5,7 @@ Add: Player.Info.Money
 Add: Economy PlayerDB
 Add: $Welcome and $Clap
 Add: Lebot Final Touches
+Add: /Vote
 Change: Various typo fixes
 
 LegendCraft Changelog v1.7.0
