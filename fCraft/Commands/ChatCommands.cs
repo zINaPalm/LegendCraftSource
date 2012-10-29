@@ -49,7 +49,8 @@ namespace fCraft
             CommandManager.RegisterCommand(CdLeBot);
             CommandManager.RegisterCommand(CdCalculator);
             CommandManager.RegisterCommand(CdGPS);
-            CommandManager.RegisterCommand(CdVote);                                              
+            CommandManager.RegisterCommand(CdVote); 
+            CommandManager.RegisterCommand(CdWorldChat);                                      
 
 
             Player.Moved += new EventHandler<Events.PlayerMovedEventArgs>(Player_IsBack);
@@ -73,6 +74,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
+
+
+        static readonly CommandDescriptor CdWorldChat = new CommandDescriptor
+        {
+            Name = "WorldChat",
+            Category = CommandCategory.Chat | CommandCategory.World,
+            Permissions = new Permission[] { Permission.ManageWorldChat },
+            IsConsoleSafe = false,
+            Usage = "/WorldChat",
+            Help = "Toggles World Chat.",
+            Handler = WorldChat,
+        };
+
+        static void WorldChat(Player player, Command cmd)
+        {
+            if (player.World.WorldOnlyChat == false)
+            {
+                player.World.WorldOnlyChat = true;
+            }
+            else
+            {
+                player.World.WorldOnlyChat = false;
+            }
+            
+        }                         
 
          static readonly CommandDescriptor CdVote = new CommandDescriptor
         {
