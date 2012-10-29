@@ -49,6 +49,7 @@ namespace fCraft
             CommandManager.RegisterCommand(CdLeBot);
             CommandManager.RegisterCommand(CdCalculator);
             CommandManager.RegisterCommand(CdGPS);
+            CommandManager.RegisterCommand(CdVote);                                              
 
 
             Player.Moved += new EventHandler<Events.PlayerMovedEventArgs>(Player_IsBack);
@@ -72,6 +73,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
+
+         static readonly CommandDescriptor CdVote = new CommandDescriptor
+        {
+            Name = "Vote",
+            Category = CommandCategory.Chat,
+            Permissions = new Permission[] { Permission.Chat },
+            IsConsoleSafe = false,
+            Usage = "/Vote Yes/No/Start If Start: Question ",
+            Help = "Allows you to vote.",
+            Handler = VoteHandler,
+        };
+
+        static void VoteHandler(Player player, Command cmd)
+        {
+            fCraft.VoteHandler.VoteParams(player, cmd);
+        }                                                                
 
         static readonly CommandDescriptor CdGPS = new CommandDescriptor
         {
