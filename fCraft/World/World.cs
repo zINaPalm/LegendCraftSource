@@ -13,6 +13,10 @@ using fCraft.Physics;
 
 namespace fCraft {
     public sealed class World : IClassy {
+
+        /// <summary>Toggles world chat</summary>
+        public bool WorldOnlyChat = false;       
+
         /// <summary> World name (no formatting).
         /// Use WorldManager.RenameWorld() method to change this. </summary>
         [NotNull]
