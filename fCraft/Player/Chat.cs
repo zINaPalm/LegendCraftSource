@@ -144,7 +144,8 @@ namespace fCraft {
                 }
             }*/
 
-            var recepientList = Server.Players.NotIgnoring(player);
+            var recepientList = Server.Players.NotIgnoring(player); if (player.World.WorldOnlyChat) recepientList = player.World.Players.NotIgnoring(player);
+
 
             string formattedMessage = String.Format( "{0}&F: {1}",
                                                      player.ClassyName,
