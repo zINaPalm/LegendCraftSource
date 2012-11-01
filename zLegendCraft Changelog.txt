@@ -1,10 +1,11 @@
 LegendCraft Changelog v1.8.0
 Add: /Economy
 Add: /Spring
+Add: /PolarRose
 Add: Player.Info.Money
 Add: Economy PlayerDB
-Add: $Welcome and $Clap
-Add: Lebot Final Touches
+Add: $Welcome, $Clap, $Mad, and Color Codes using $messages (ex. $green)
+Add: Lebot Final Touches, including Players option, more jokes and more funfacts
 Add: /Vote
 Add: /WorldChat
 Change: Various typo fixes
