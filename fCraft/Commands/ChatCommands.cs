@@ -386,6 +386,10 @@ THE SOFTWARE.*/
                                       "&fEvening news is where they begin with 'Good evening', and then proceed to tell you why it isn't.",
                                       "&fYou do not need a parachute to skydive. You only need a parachute to skydive twice.",
                                       "&fWhen in doubt, mumble.",
+                                      "&fWar does not determine who is right – only who is left...",
+                                      "&fI wondered why the frisbee was getting bigger - then it hit me.",
+                                      "&fNever argue with a fool, they will lower you to their level, and then beat you with experience.",
+                                      "&fThere are 3 kinds of people in the world: Those who can count and those who can't.",
                                       "&fNever hit a man with glasses. Hit him with a baseball bat instead.",
                                       "&fNostalgia isn't what it used to be."};
                 Random RandjokeString = new Random();
@@ -440,8 +444,12 @@ THE SOFTWARE.*/
             {
                 Server.Message("{0}&f: LeBot, FunFact", player.ClassyName);
                 string[] factStrings = { "&fMaine is the only state in the USA that is one syllable.",
+                                      "fThe adult human brain weighs about 3 pounds (1,300-1,400 g).",
+                                      "&fPirates of old spoke just like everyone else. The 'pirate accent' was invented for the 1950 Disney movie, Treasure Island.",
                                       "&fAlmonds are a member of the peach family.",
+                                      "&fParaguay's flag is the only national flag where the front and the back are different.",
                                       "&fAn ostrich's eye is bigger than it's brain.",
+                                      "&fIn 1999, Furbies were banned by the Pentagon, based on the fear that the dolls would mimic top-secret discussions.",
                                       "&fA dime has 118 ridges around the edge.",
                                       "&fPeanuts are one of the ingredients of dynamite.",
                                       "&fTwo thirds of the world's eggplant is grown in New Jersey.",
