@@ -194,7 +194,7 @@ namespace fCraft
             Permissions = new Permission[] { Permission.DrawAdvanced },
             IsConsoleSafe = false,
             Usage = "/Spring [Number of revolutions]",
-            Help = "Draws up to ten revolutions of a spring in the given area. Between 1 and 9 revolutions can be made.",
+            Help = "Draws up to 9 revolutions of a spring in the given area.",
             NotRepeatable = true,
             Handler = SpringHandler,
         };
