@@ -39,6 +39,7 @@ namespace fCraft
             CommandManager.RegisterCommand(CdStartParam);
             CommandManager.RegisterCommand(CdClearParam);
             CommandManager.RegisterCommand(CdSpring);
+            CommandManager.RegisterCommand(CdPolarRose);
         }
         const string commonFuncHelp = "Can also be x=f(y, z) or y=f(x, z). ";
 
@@ -189,13 +190,28 @@ namespace fCraft
         {
             Name = "Spring",
             Aliases = new[] { "Helix" },
-            Category = CommandCategory.Chat | CommandCategory.Building,
+            Category = CommandCategory.Building,
             Permissions = new Permission[] { Permission.DrawAdvanced },
             IsConsoleSafe = false,
-            Usage = "/Spring Item",
-            Help = "Draws one revolution of a spring in the given area.\n", 
+            Usage = "/Spring [Number of revolutions]",
+            Help = "Draws up to ten revolutions of a spring in the given area. Between 1 and 9 revolutions can be made.",
             NotRepeatable = true,
             Handler = SpringHandler,
+        };
+        
+        static readonly CommandDescriptor CdPolarRose = new CommandDescriptor
+        {
+            Name = "PolarRose",
+            Aliases = new[] { "pr", "rose" },
+            Category = CommandCategory.Building,
+            Permissions = new Permission[] { Permission.DrawAdvanced },
+            IsConsoleSafe = false,
+            Usage = "/PolarRose [Number of Petals] [Length of Petals] [Number of Revolutions] [Height Upward]",
+            Help = "Draws a polar rose. Leave height blank for flat rose. " +
+                   "The lengths and heights expand with your chosen interval, so they are relative. " +
+                   "&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,infinity), Height[1,infinity).",
+            NotRepeatable = true,
+            Handler = PolarRoseHandler,
         };
 
 
@@ -291,21 +307,146 @@ namespace fCraft
                 }
             }
         }
-          private static void SpringHandler(Player player, Command cmd)
+         private static void SpringHandler(Player player, Command cmd)       //for /spring
         {
-            string item = cmd.Next();
+            string revolutions = cmd.Next();
+            int rev;
+            bool parsed = Int32.TryParse(revolutions, out rev); //tries to convert input to int
 
             if (player.Can(Permission.DrawAdvanced))
             {
-                    PrepareSpring.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
-                    PrepareSpring.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
-                    PrepareSpring.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
-                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 1 0.01"));
-                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 1 0.01"));
-                    StartParametrizedDraw(player, new Command("/spd uu"));
+
+                PrepareSpring.SetParametrization(player, new Command("/scp x=(1+0.2*cos(2*pi*v))*sin(2*pi*u)"));
+                PrepareSpring.SetParametrization(player, new Command("/scp y=(1+0.2*cos(2*pi*v))*cos(2*pi*u)"));
+                PrepareSpring.SetParametrization(player, new Command("/scp z=u+0.2*sin(2*pi*v)"));
+
+                if (revolutions == null || rev == 1)     //if number of revolutions isnt specified, just does 1
+                {
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 1 0.005"));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 1 0.005"));
+                }
+
+                else if (rev > 9 || rev <= 0)        //The greatest number of revolutions without having to adjust the number of iteration steps. I would adjust the number
+                {                                    // of iterations per requested number of revolutions, but it would make the spring look like the blocks were placed too sparingly.
+                    player.Message("The number of revolutions must be between 1 and 9.");
+                    return;
+                }
+
+                else if (rev > 1 && rev < 5)         //different amount of iteration steps when different number of revolutions. Makes the springs look more filled in.
+                {
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 " + rev + " 0.005"));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 " + rev + " 0.005"));
+                }
+
+                else if (rev <= 9 && rev >= 5)       //different amount of iteration steps when different number of revolutions. Makes the springs look more filled in.
+                {
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 " + rev + " 0.0099"));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 " + rev + " 0.0099"));
+                }
+                StartCmdDraw(player, new Command("/spd uu"));       //uses custom handler as to not display messages to the user
             }
             else
-                player.Message("Your rank cannot use this command.");
+            {
+                CdSpring.PrintUsage(player);
+            }
+        }
+        private static void PolarRoseHandler(Player player, Command cmd)
+        {
+            //prepping variables, converting them to ints to enter into the equations
+            string petals = cmd.Next();
+            int pet;
+            bool parsedPet = Int32.TryParse(petals, out pet);
+            int petTest = (pet / 2);
+
+            string length = cmd.Next();
+            int len;
+            bool parsedLen = Int32.TryParse(length, out len);
+
+            string revolutions = cmd.Next();
+            int rev;
+            bool parsedRev = Int32.TryParse(revolutions, out rev);
+            double numRev = (6.28 * rev);
+
+            string Height = cmd.Next();
+            int height;
+            bool parsedHeight = Int32.TryParse(Height, out height);
+
+            double NumHeight = (height * 0.01);             //This makes the Height more managable for the user
+            double RevIter = (0.01 + (rev * 0.005));        //Iteration needs to be adjusted based on how many revolutions are made.
+            double RevIter6 = (rev * 0.015);                //Seperate RevIter for when 6 petals (required because of method used for 6 petals)
+
+            if (player.Can(Permission.DrawAdvanced) && pet > 2 && len > 0 && len < 5 && rev > 0)
+            {
+                if (!parsedPet || !parsedLen || !parsedRev)                //if the player enters in invalid values for length or number of petals
+                {
+                    player.Message("Please enter whole number values for each of the variables. (Height is optional) Type /help pr for the ranges.");
+                    return;
+                }
+
+                if (petals == null || length == null || revolutions == null)
+                {
+                    player.Message("Please enter values for number of petals, length of petals and number of revolutions.");
+                }
+
+                if (pet == 4 || pet == 8 || pet == 10 || pet == 12 || pet == 14 || pet == 16)   //When the number of petals is even, the  number entered has to be halved to get the
+                {                                                                               //right number of petals. I figured numbers over 16, the user wouldn't even notice.
+                    PrepareSpring.SetParametrization(player, new Command("/scp x=" + len + "*sin(" + petTest + "*u)*cos(u)"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp y=" + len + "*sin(" + petTest + "*u)*sin(u)"));
+                }
+
+                else if (pet == 6)       //The math behind this is complicated, but getting 6 petals with this method is impossible. I am using a different method 
+                {                   //for when the user asks for 6 petals. They will be slightly overlapping, unlike the others.
+                    PrepareSpring.SetParametrization(player, new Command("/scp x=" + len + "*sin(1.5*u)*cos(u)"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp y=" + len + "*sin(1.5*u)*sin(u)"));
+                }
+
+                else
+                {
+                    PrepareSpring.SetParametrization(player, new Command("/scp x=" + len + "*sin(" + pet + "*u)*cos(u)"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp y=" + len + "*sin(" + pet + "*u)*sin(u)"));
+                }
+
+                if (Height == null || Height.Length == 0) //If no height is specified, the rose will be flat.
+                {
+                    PrepareSpring.SetParametrization(player, new Command("/scp z=1"));
+                }
+
+                else if (Height.Length >= 1 && parsedHeight)
+                {
+                    PrepareSpring.SetParametrization(player, new Command("/scp z=" + NumHeight + "*u"));
+                }
+
+                else
+                {
+                    player.Message("Please enter whole integer values for each of the variables. (Height is optional) Type /help pr for the ranges.");
+                    return;
+                }
+
+                if (pet == 6)
+                {
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 12.56 " + RevIter6));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 12.56 " + RevIter6));
+                }
+
+                else
+                {
+                    PrepareSpring.SetParamIteration(player, new Command("/spi u 0 " + numRev + " " + RevIter));
+                    PrepareSpring.SetParamIteration(player, new Command("/spi v 0 " + numRev + " " + RevIter));
+                }
+
+                StartCmdDraw(player, new Command("/spd uu"));           //uses custom handler as to not display messages to user
+            }
+
+            else if (pet < 3 || len < 1 || len > 4 || rev < 0 || height < 1)
+            {
+                player.Message("&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,infinity), Height[1,infinity).");
+                return;
+            }
+
+            else
+            {
+                CdPolarRose.PrintUsage(player);
+            }
         }
     }
 }
