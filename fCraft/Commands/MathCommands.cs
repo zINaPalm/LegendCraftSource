@@ -277,6 +277,18 @@ namespace fCraft
                 player.Message("Error: " + e.Message);
             }
         }
+        private static void StartCmdDraw(Player player, Command cmd) //for future use with math cmds such as /Spring and /PolarRose
+        {
+            try
+            {
+                StartSpringDraw operation = new StartSpringDraw(player, cmd);
+                DrawOperationBegin(player, cmd, operation);
+            }
+            catch (Exception e)
+            {
+                player.Message("Error: " + e.Message);
+            }
+        }
 
 
         //copy-paste from BuildingCommands
