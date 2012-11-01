@@ -40,6 +40,28 @@ namespace fCraft {
             rawMessage = rawMessage.Replace("$mad", "You mad, bro?");
             rawMessage = rawMessage.Replace("$welcome", "Welcome to " +ConfigKey.ServerName.GetString());
             rawMessage = rawMessage.Replace("$clap", "A round of applause might be appropriate, *claps*");
+            
+            if (player.Can(Permission.UseColorCodes))
+            {
+                rawMessage = rawMessage.Replace("$lime", "&a");     //alternate color codes for ease if you can't remember the codes
+                rawMessage = rawMessage.Replace("$aqua", "&b");
+                rawMessage = rawMessage.Replace("$red", "&c");
+                rawMessage = rawMessage.Replace("$magenta", "&d");
+                rawMessage = rawMessage.Replace("$yellow", "&e");
+                rawMessage = rawMessage.Replace("$white", "&f");
+                rawMessage = rawMessage.Replace("$navy", "&1");
+                rawMessage = rawMessage.Replace("$green", "&2");
+                rawMessage = rawMessage.Replace("$teal", "&3");
+                rawMessage = rawMessage.Replace("$maroon", "&4");
+                rawMessage = rawMessage.Replace("$purple", "&5");
+                rawMessage = rawMessage.Replace("$olive", "&6");
+                rawMessage = rawMessage.Replace("$silver", "&7");
+                rawMessage = rawMessage.Replace("$grey", "&8");
+                rawMessage = rawMessage.Replace("$gray", "&8");
+                rawMessage = rawMessage.Replace("$blue", "&9");
+                rawMessage = rawMessage.Replace("$black", "&0");
+            }
+            
             if (!player.Can(Permission.ChatWithCaps))
             {
                 int caps = 0;
