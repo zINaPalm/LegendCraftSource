@@ -457,6 +457,7 @@ THE SOFTWARE.*/
                 Server.Message("&0LeBot&f: " + factStrings[RandfactString.Next(0, factStrings.Length)]);
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
+            
             else if (option == "players")
             {
                 string param = cmd.Next();
@@ -465,53 +466,46 @@ THE SOFTWARE.*/
                 int offset = 0;
                 players = Server.Players;
                 qualifier = "online";
-                
-                if (param == null || Int32.TryParse(param, out offset))
-                {
-                    
-                    if (cmd.HasNext)
-                    {
-                        player.Message("/LeBot players [number]");
-                        return;
-                    }
-                }
+                player.Info.LastUsedLeBot = DateTime.Now;
 
                 if (players.Length > 0)
                 {
                     // Filter out hidden players, and sort
-                    Player[] visiblePlayers = players.Where(player.CanSee)
-                                                     .OrderBy(p => p, PlayerListSorter.Instance)
-                                                     .ToArray();
+                    Player[] visiblePlayers = players.Where(player.CanSee).OrderBy(p => p, PlayerListSorter.Instance).ToArray();
 
                     if (visiblePlayers.Length == 0)
                     {
+                        Server.Message("{0}&f: LeBot, Players", player.ClassyName);
                         Server.Message("&0LeBot&f: There are no players {0}", qualifier);
-
                     }
+                    
                     else if (visiblePlayers.Length <= PlayersPerPage || player.IsSuper)
                     {
-                        Server.Message("&S ", "&SThere are {0} players {1}: {2}",
-                                                visiblePlayers.Length, qualifier, visiblePlayers.JoinToClassyString());
+                        Server.Message("{0}&f: LeBot, Players", player.ClassyName);
+                        Server.Message("&0LeBot&f: &SThere are {0} players {1}: {2}", visiblePlayers.Length, qualifier, visiblePlayers.JoinToClassyString());
                     }
+                    
                     else
                     {
                         if (offset >= visiblePlayers.Length)
                         {
                             offset = Math.Max(0, visiblePlayers.Length - PlayersPerPage);
                         }
+                        Server.Message("{0}&f: LeBot, Players", player.ClassyName);
                         Player[] playersPart = visiblePlayers.Skip(offset).Take(PlayersPerPage).ToArray();
-                        Server.Message("&S ", "&SPlayers {0}: {1}",
+                        Server.Message("&0LeBot&f: &SPlayers {0}: {1}",
                                                 qualifier, playersPart.JoinToClassyString());
 
                         if (offset + playersPart.Length < visiblePlayers.Length)
                         {
+                            Server.Message("{0}&f: LeBot, Players", player.ClassyName);
                             Server.Message("&0LeBot&f: Showing {0}-{1} (out of {2}). Next: &H/Lb Players {3}{1}",
                                             offset + 1, offset + playersPart.Length,
-                                            visiblePlayers.Length,
-                                            (worldName == null ? "" : worldName + " "));
+                                            visiblePlayers.Length);
                         }
                         else
                         {
+                            Server.Message("{0}&f: LeBot, Players", player.ClassyName);
                             Server.Message("&0LeBot&f: Showing players {0}-{1} (out of {2}).",
                                             offset + 1, offset + playersPart.Length,
                                             visiblePlayers.Length);
@@ -520,6 +514,7 @@ THE SOFTWARE.*/
                 }
                 else
                 {
+                    Server.Message("{0}&f: LeBot, Players", player.ClassyName);
                     Server.Message("&0LeBot&f: There are no players {0}", qualifier);
                 }
             }
