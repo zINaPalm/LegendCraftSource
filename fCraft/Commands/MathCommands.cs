@@ -209,7 +209,7 @@ namespace fCraft
             Usage = "/PolarRose [Number of Petals] [Length of Petals] [Number of Revolutions] [Height Upward]",
             Help = "Draws a polar rose. Leave height blank for flat rose. " +
                    "The lengths and heights expand with your chosen interval, so they are relative. " +
-                   "&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,infinity), Height[1,infinity).",
+                   "&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,4), Height[1,infinity).",
             NotRepeatable = true,
             Handler = PolarRoseHandler,
         };
@@ -387,7 +387,7 @@ namespace fCraft
             double RevIter = (0.01 + (rev * 0.005));        //Iteration needs to be adjusted based on how many revolutions are made.
             double RevIter6 = (rev * 0.015);                //Seperate RevIter for when 6 petals (required because of method used for 6 petals)
 
-            if (player.Can(Permission.DrawAdvanced) && pet > 2 && len > 0 && len < 5 && rev > 0)
+            if (player.Can(Permission.DrawAdvanced) && pet > 2 && len > 0 && len < 5 && rev > 0 && rev < 5)
             {
                 if (!parsedPet || !parsedLen || !parsedRev)                //if the player enters in invalid values for length or number of petals
                 {
@@ -420,7 +420,7 @@ namespace fCraft
 
                 if (Height == null || Height.Length == 0) //If no height is specified, the rose will be flat.
                 {
-                    PrepareSpring.SetParametrization(player, new Command("/scp z=1"));
+                    PrepareSpring.SetParametrization(player, new Command("/scp z=0"));
                 }
 
                 else if (Height.Length >= 1 && parsedHeight)
@@ -449,9 +449,9 @@ namespace fCraft
                 StartCmdDraw(player, new Command("/spd uu"));           //uses custom handler as to not display messages to user
             }
 
-            else if (pet < 3 || len < 1 || len > 4 || rev < 0 || height < 1)
+            else if (pet < 3 || len < 1 || len > 4 || rev < 0 || height < 1 || rev > 4)
             {
-                player.Message("&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,infinity), Height[1,infinity).");
+                player.Message("&cRanges: &hPetals[3,infinity), Length[1,4], Revolutions[1,4), Height[1,infinity).");
                 return;
             }
 
