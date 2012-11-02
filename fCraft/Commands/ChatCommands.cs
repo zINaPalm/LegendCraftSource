@@ -324,7 +324,7 @@ THE SOFTWARE.*/
                 }
                 else
                 {
-                    player.Message("&WYou can use /LeBot again in" + LeftOverTime + "seconds");
+                    player.Message("&WYou can use /LeBot again in " + LeftOverTime + " seconds");
                 }
             }
             if (option == null)
