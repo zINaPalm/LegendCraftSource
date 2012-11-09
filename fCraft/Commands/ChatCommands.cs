@@ -40,8 +40,8 @@ namespace fCraft
 
             CommandManager.RegisterCommand(CdBroFist);
             CommandManager.RegisterCommand(CdGive);
-            //CommandManager.RegisterCommand(CdJelly);
-            //CommandManager.RegisterCommand(CdMad);
+            CommandManager.RegisterCommand(CdJelly);
+            CommandManager.RegisterCommand(CdMad);
             CommandManager.RegisterCommand(CdBanHammer);
             CommandManager.RegisterCommand(CdCredits);
             CommandManager.RegisterCommand(CdSTFU);
@@ -76,6 +76,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.*/
 
 
+        
         static readonly CommandDescriptor CdWorldChat = new CommandDescriptor
         {
             Name = "WorldChat",
@@ -195,7 +196,7 @@ THE SOFTWARE.*/
                             {
                                 if (add % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
                                 {
-                                    player.Message("&0Calculator: &e{0}+{1}={2}", no1, no2, add);
+                                    player.Message("&0Calculator&f: {0}+{1}={2}", no1, no2, add);
                                 }
                                 else
                                 {
@@ -216,7 +217,7 @@ THE SOFTWARE.*/
                             {
                                 if (subtr % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
                                 {
-                                    player.Message("&0Calculator: &e{0}-{1}={2}", no1, no2, subtr);
+                                    player.Message("&0Calculator&f: {0}-{1}={2}", no1, no2, subtr);
                                 }
                                 else
                                 {
@@ -238,7 +239,7 @@ THE SOFTWARE.*/
                             {
                                 if (mult % 2 == 0 | no1 % 2 == 0 | no2 % 2 == 0)
                                 {
-                                    player.Message("&0Calculator: &e{0}*{1}={2}", no1, no2, mult);
+                                    player.Message("&0Calculator&f: {0}*{1}={2}", no1, no2, mult);
                                 }
                                 else
                                 {
@@ -263,11 +264,11 @@ THE SOFTWARE.*/
                                 {
                                     if (no1 % no2 == 0)
                                     {
-                                        player.Message("&0Calculator: &e{0}/{1}={2}", no1, no2, div);
+                                        player.Message("&0Calculator&f: {0}/{1}={2}", no1, no2, div);
                                     }
                                     else
                                     {
-                                        player.Message("&0Calculator: &e{0}/{1}={2}, rounded", no1, no2, div);
+                                        player.Message("&0Calculator&f: {0}/{1}={2}, rounded", no1, no2, div);
                                     }
                                 }
                                 else
@@ -280,7 +281,7 @@ THE SOFTWARE.*/
                     }
                     else
                     {
-                        player.Message("Invalid Operator. Please choose from '+' , '-' , '*' , or '/'");
+                        player.Message("&cInvalid Operator. Please choose from '+' , '-' , '*' , or '/'");
                         return;
                     }
                 }
@@ -325,6 +326,7 @@ THE SOFTWARE.*/
                 else
                 {
                     player.Message("&WYou can use /LeBot again in " + LeftOverTime + " seconds");
+                    return;
                 }
             }
             if (option == null)
@@ -342,6 +344,7 @@ THE SOFTWARE.*/
                     "Promos: Displays the amount of players the user has promote.d\n" +
                     "Bans: Displays the amount of players the user has banned.\n" +
                     "Kicks: Displays the amount of players the user has kicked.\n" +
+                    "Players: Displays the current players online.\n" +
                     "Blocks: Displays the amount of blocks the user has modified.\n" +
                     "Funfact: Displays a funfact.\n");
             }
@@ -402,7 +405,7 @@ THE SOFTWARE.*/
                 TimeSpan time = TimeSpan.FromHours(player.Info.TotalTime.TotalHours);
 
               
-               Server.Message("&0LeBot&f: {0} &fhas spent a total of " + time.ToMiniString() + " &fon {1}.", player.ClassyName, ConfigKey.ServerName.GetString());
+               Server.Message("&0LeBot&f: {0}&f has spent a total of " + time.ToMiniString() + " &fon {1}&f.", player.ClassyName, ConfigKey.ServerName.GetString());
 
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
@@ -428,8 +431,6 @@ THE SOFTWARE.*/
                 Server.Message("{0}&f: LeBot, Kicks", player.ClassyName);
 
                 Server.Message("&0LeBot&f: {0}&f has kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
-
-                Server.Message("&0LeBot&f: {0} &fhas kicked " + player.Info.TimesKickedOthers.ToString() + " players.", player.ClassyName);
 
                 player.Info.LastUsedLeBot = DateTime.Now;
             }
@@ -944,7 +945,7 @@ THE SOFTWARE.*/
         //You should have received a copy of the GNU General Public License
         //along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-
+      
 
         static readonly CommandDescriptor CdModerate = new CommandDescriptor
         {
