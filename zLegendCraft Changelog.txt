@@ -4,11 +4,13 @@ Add: /Spring
 Add: /PolarRose
 Add: Player.Info.Money
 Add: Economy PlayerDB
-Add: $Welcome, $Clap, $Mad, and Color Codes using $messages (ex. $green)
+Add: $Welcome, $Clap, $Mad, and $(Color)
 Add: Lebot Final Touches, including Players option, more jokes and more funfacts
 Add: /Vote
 Add: /WorldChat
 Change: Various typo fixes
+Remove: /Jelly
+Remove: /Mad
 
 LegendCraft Changelog v1.7.0
 Add: /fortunecookie
