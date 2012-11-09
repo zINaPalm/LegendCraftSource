@@ -8,6 +8,7 @@ Add: $Welcome, $Clap, $Mad, and $(Color)
 Add: Lebot Final Touches, including Players option, more jokes and more funfacts
 Add: /Vote
 Add: /WorldChat
+Add: /WhoIs, thx jonty
 Change: Various typo fixes
 Remove: /Jelly
 Remove: /Mad
