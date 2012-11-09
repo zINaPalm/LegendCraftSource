@@ -40,8 +40,8 @@ namespace fCraft
 
             CommandManager.RegisterCommand(CdBroFist);
             CommandManager.RegisterCommand(CdGive);
-            CommandManager.RegisterCommand(CdJelly);
-            CommandManager.RegisterCommand(CdMad);
+            //CommandManager.RegisterCommand(CdJelly);
+            //CommandManager.RegisterCommand(CdMad);
             CommandManager.RegisterCommand(CdBanHammer);
             CommandManager.RegisterCommand(CdCredits);
             CommandManager.RegisterCommand(CdSTFU);
