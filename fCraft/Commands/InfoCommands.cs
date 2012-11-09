@@ -38,6 +38,7 @@ namespace fCraft {
 
             CommandManager.RegisterCommand(CdReqs);
             CommandManager.RegisterCommand(CdList);
+            CommandManager.RegisterCommand(CdWhoIs);
 
 #if DEBUG_SCHEDULER
             CommandManager.RegisterCommand( cdTaskDebug );
@@ -59,6 +60,74 @@ namespace fCraft {
 
         //You should have received a copy of the GNU General Public License
         //along with this program.  If not, see <http://www.gnu.org/licenses/>.
+        
+          static readonly CommandDescriptor CdWhoIs = new CommandDescriptor
+        {
+            Name = "WhoIs",
+            Category = CommandCategory.Info,
+            Permissions = new Permission[] { Permission.ViewOthersInfo },
+            IsConsoleSafe = false,
+            Usage = "/Whois DisplayedName",
+            Handler = WhoIsHandler
+        };
+        private static void WhoIsHandler(Player player, Command cmd)
+        {
+            string Name = cmd.Next();
+            if (string.IsNullOrEmpty(Name))
+            {
+                CdWhoIs.PrintUsage(player);
+                return;
+            }
+            Name = Color.StripColors(Name.ToLower());
+            PlayerInfo[] Names = PlayerDB.PlayerInfoList.Where(p => p.DisplayedName != null &&
+                Color.StripColors(p.DisplayedName.ToLower()).Contains(Name))
+                                         .ToArray();
+            Array.Sort(Names, new PlayerInfoComparer(player));
+            if (Names.Length < 1)
+            {
+                player.Message("&WNo results found with that DisplayedName");
+                return;
+            }
+            if (Names.Length == 1)
+            {
+                player.Message("One player found with that DisplayedName: {0}", Names[0].Rank.Color + Names[0].Name);
+                return;
+            }
+            if (Names.Length <= 15)
+            {
+                MessageManyMatches(player, Names);
+            }
+            else
+            {
+                int offset;
+                if (!cmd.NextInt(out offset)) offset = 0;
+                if (offset >= Names.Length)
+                    offset = Math.Max(0, Names.Length - 15);
+                PlayerInfo[] Part = Names.Skip(offset).Take(15).ToArray();
+                MessageManyMatches(player, Part);
+                if (offset + Part.Length < Names.Length)
+                {
+                    player.Message("Showing {0}-{1} (out of {2}). Next: &H/Whois {3} {4}",
+                                    offset + 1, offset + Part.Length, Names.Length,
+                                    Name, offset + Part.Length);
+                }
+                else
+                {
+                    player.Message("Showing matches {0}-{1} (out of {2}).",
+                                    offset + 1, offset + Part.Length, Names.Length);
+                }
+            }
+        }
+
+        static void MessageManyMatches(Player player, PlayerInfo[] names)
+        {
+            if (names == null) throw new ArgumentNullException("names");
+
+            string nameList = names.JoinToString(", ", p => p.Rank.Color + p.Name + "&S(" + p.ClassyName + "&S)");
+            player.Message("More than one player matched with that DisplayedName: {0}",
+                     nameList);
+        }
+                     
 
         static readonly CommandDescriptor CdList = new CommandDescriptor
         {
