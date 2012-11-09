@@ -106,7 +106,7 @@ THE SOFTWARE.*/
             Category = CommandCategory.Chat,
             Permissions = new Permission[] { Permission.Chat },
             IsConsoleSafe = false,
-            Usage = "/Vote Yes/No/Start If Start: Question ",
+            Usage = "/Vote Yes/No/Ask/Abort",
             Help = "Allows you to vote.",
             Handler = VoteHandler,
         };
