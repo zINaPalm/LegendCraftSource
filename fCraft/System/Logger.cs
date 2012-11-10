@@ -27,7 +27,7 @@ namespace fCraft
         const string DefaultLogFileName = "LegendCraft.log",
                      LongDateFormat = "yyyy'-'MM'-'dd'_'HH'-'mm'-'ss",
                      ShortDateFormat = "yyyy'-'MM'-'dd";
-        static readonly Uri CrashReportUri = new Uri(null);
+        static readonly Uri CrashReportUri = new Uri(http://dingusserver.forumotion.com/f9-legendcraft);
         public static LogSplittingType SplittingType = LogSplittingType.OneFile;
 
         static readonly string SessionStart = DateTime.Now.ToString(LongDateFormat); // localized
