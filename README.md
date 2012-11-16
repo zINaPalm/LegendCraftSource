@@ -1,4 +1,4 @@
-﻿Thank you for downloading NaPalmCraft, a custom Minecraft server based on fCraft and 800craft.
+﻿Thank you for downloading LegendCraft, a custom Minecraft server based on fCraft and 800craft.
 
 Special thanks to fragmer, for creating fCraft! Special thanks to Jonty800, GlennMR and LaoTszy for creating 800Craft!
 LegendCraft is a modified version of 800Craft. LegendCraft configGUIs and serverGUIs were moddeled after 800Craft's.
@@ -25,7 +25,7 @@ Mono 2.8+:  "mono --gc=sgen SomeFile.exe"
 
 If you're intending to run a public server that appears on minecraft.net's server list, 	
 you need to import https certificates to tell mono you trust them, this can be done by 
-running mozroots --import --ask-remove as the 800Craft user on your system.
+running mozroots --import --ask-remove as the LegendCraft user on your system.
 
 === Initial Setup =============================================================
 
@@ -49,14 +49,14 @@ Server does not show up on minecraft.net list:
         (or set <IsPublic> to true in config.xml).
 
 "Could not connect to server: it's probably down":
-    Make sure that you added firewall exception for 800Craft (if applicable),
+    Make sure that you added firewall exception for LegendCraft (if applicable),
     and forwarded the port on your router. If you are connecting from same
     computer that the server is working on, try connecting to:
     http://www.minecraft.net/play.jsp?ip=127.0.0.1&port=____
         (fill in the blank with your server's port number)
 
 "Could not verify player name":
-    Verification problems occur when your 800Craft server cannot verify identity
+    Verification problems occur when your LegendCraft server cannot verify identity
     of connecting players. Here are some things that may cause or fix
     verification problems:
     1. If minecraft.net is offline or slow, wait for it to stabilize.
